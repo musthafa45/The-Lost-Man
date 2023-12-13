@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ffbbde88771284d914cb40b2050b3e, type: 3}
+  m_Name: BatterySO
+  m_EditorClassIdentifier: 
+  gatherableObjectPrefab: {fileID: 3587477407753694218, guid: bd0d38961cead9e4096f18b228069d57,
+    type: 3}
+  gatherableImageSprite: {fileID: 21300000, guid: 1c034402092d1524aae3b47441bfc4aa,
+    type: 3}
+  gatherableObjectName: Battery
+  description:
+  - Battery Using It for Torch
+  gatherableType: 3
+  storingType: 0
+  value: 600
+  quantity: 0
+  itemSetUppedPrefab: {fileID: 2042957261028064118, guid: 2a31ff183ef3a2b4bb8e18d47be38084,
+    type: 3}
