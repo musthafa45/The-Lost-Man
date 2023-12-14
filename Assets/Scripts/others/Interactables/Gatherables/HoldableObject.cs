@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HoldableObject : MonoBehaviour, IInteractable
 {
+    [SerializeField] private HoldableObjectSO holdableObjectSO;
     public void Interact(Transform interactorTransform)
     {
         ObjectHolder objectHolder = FindObjectOfType<ObjectHolder>();
@@ -16,5 +17,10 @@ public class HoldableObject : MonoBehaviour, IInteractable
         {
             Debug.LogError("No Object Holder Script Found");
         }
+    }
+
+    public HoldableObjectSO GetHoldableObjectSO()
+    {
+        return holdableObjectSO;
     }
 }
