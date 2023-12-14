@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OffsetFlashlight : MonoBehaviour
 {
-	private Vector3 vectOffset = Vector3.zero;
+    [SerializeField] private Vector3 vectOffset = Vector3.zero;
 	[SerializeField] GameObject goFollow;
 	[SerializeField] float speed = 5.0f;
 
@@ -23,7 +23,7 @@ public class OffsetFlashlight : MonoBehaviour
 	{
 		speed = Torch.Instance.IsActive() ? 5f : oldSpeed;
 
-		transform.position = goFollow.transform.position + vectOffset;
+		transform.position = FirstPersonController.Instance.transform.position + vectOffset; //goFollow.transform.position /*+ vectOffset*/;
 		transform.rotation = Quaternion.Slerp(transform.rotation, goFollow.transform.rotation, speed * Time.deltaTime);
 	}
 }
