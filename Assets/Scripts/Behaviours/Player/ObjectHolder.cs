@@ -66,6 +66,11 @@ public class ObjectHolder : MonoBehaviour
 
             Debug.Log(holdPointData.HoldPointName);
             Debug.Log(holdableObj.GetHoldableObjectSO().throwForce);
+
+            if (holdableObj.GetHoldableObjectSO().Name == "Pole")
+            {
+                holdableObj.GetComponent<Pole>().isThrowed = true;
+            }
         }
 
     }
@@ -95,6 +100,13 @@ public class ObjectHolder : MonoBehaviour
             holdableObject.transform.gameObject.layer = LayerMask.NameToLayer("Default");
             holdableObject.transform.rotation = holdPointData.HoldPointTransform.rotation;
             holdingObjects.Add(holdPointData, holdableObject);
+
+            if(holdableObject.GetHoldableObjectSO().Name == "Pole")
+            {
+                var pole = holdableObject.GetComponent<Pole>();
+                pole.isHitted = false;
+                pole.isThrowed = false;
+            }
         }
     }
 

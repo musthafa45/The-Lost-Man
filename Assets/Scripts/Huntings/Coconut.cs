@@ -17,7 +17,8 @@ public class Coconut : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent(out HoldableObject holdableObject))
         {
-            if(holdableObject.GetHoldableObjectSO().Name == "Stone")
+            string hitObjName = holdableObject.GetHoldableObjectSO().Name;
+            if (hitObjName == "Stone" || hitObjName == "Pole")
             {
                 float hitObjForce = Mathf.FloorToInt(Mathf.Abs(holdableObject.GetComponent<Rigidbody>().velocity.magnitude));
                 health -= hitObjForce;
