@@ -59,7 +59,7 @@ public class ObjectHolder : MonoBehaviour
             rb.isKinematic = false;
             holdableObj.gameObject.GetComponent<Collider>().isTrigger = false;
 
-            rb.AddForce(Camera.main.transform.forward * holdableObj.GetHoldableObjectSO().throwForce, throwForceMode);
+            rb.AddForce(Camera.main.transform.forward * holdableObj.GetHoldableObjectSO().throwForce,throwForceMode);
 
             holdingObjects.Remove(holdPointData);
             holdPointData.IsAccupied = false;
