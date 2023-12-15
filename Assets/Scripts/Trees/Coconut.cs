@@ -6,6 +6,13 @@ using UnityEngine;
 public class Coconut : MonoBehaviour
 {
     [SerializeField] private float health = 30f;
+    [SerializeField] private GatherableSO gatherableObjectSO;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.TryGetComponent(out HoldableObject holdableObject))
@@ -19,11 +26,18 @@ public class Coconut : MonoBehaviour
 
                 if(health <= 0)
                 {
-                  GetComponent<Rigidbody>().isKinematic = false;
+                    rb.isKinematic = false;
+                    Invoke(nameof(AddGatherableObjectCS),2f);
+                    this.gameObject.layer = LayerMask.NameToLayer("Interactable");
                 }
             }
           
         }
 
+    }
+
+    private void AddGatherableObjectCS()
+    {
+        gameObject.AddComponent<GatherableObject>().SetGatherableObjectSO(gatherableObjectSO);
     }
 }

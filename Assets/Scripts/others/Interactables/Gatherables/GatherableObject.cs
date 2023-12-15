@@ -8,6 +8,10 @@ public class GatherableObject : MonoBehaviour,IInteractable
 {
     [SerializeField] private GatherableSO gatherableSO;                  // Gatherable object data
 
+    private void Start()
+    {
+        
+    }
     public void Interact(Transform interactorTransform)
     {
         bool isInventoryAccepted = EventManager.Instance.InvokeTryPickupedItem(gatherableSO);
@@ -18,6 +22,10 @@ public class GatherableObject : MonoBehaviour,IInteractable
     public GatherableSO GetGatherableSO()
     {
         return gatherableSO;
+    }
+    public void SetGatherableObjectSO(GatherableSO gatherableSO)
+    {
+        this.gatherableSO = gatherableSO;
     }
 
     private void OnCollisionEnter(Collision collision)
