@@ -8,7 +8,6 @@ public class ObjectHolder : MonoBehaviour
     [SerializeField] private HoldPointData leftHoldPointData;
     [SerializeField] private HoldPointData rightHoldPointData;
 
-    [SerializeField] private float throwForce = 100f;
     [SerializeField] private ForceMode throwForceMode = ForceMode.Impulse;
 
     private Dictionary<HoldPointData,HoldableObject> holdingObjects = new(2);

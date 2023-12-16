@@ -1,0 +1,83 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SwapController : MonoBehaviour
+{
+    [SerializeField] private Transform seatTransform;
+    [SerializeField] private Transform leftExitWay;
+    [SerializeField] private Transform rightExitWay;
+    private bool isPlayerInside = false;
+    private void OnEnable()
+    {
+        EventManager.Instance.OnPlayerTryGetInTruck += EventManager_Instance_OnPlayerTryInteractTruckDoor;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnPlayerTryGetInTruck -= EventManager_Instance_OnPlayerTryInteractTruckDoor;
+    }
+
+    private void EventManager_Instance_OnPlayerTryInteractTruckDoor(Transform playerTransform, TruckDoor truckDoor)
+    {
+        if(!isPlayerInside)
+        {
+            GetPlayerInTruck(playerTransform);
+            isPlayerInside = true;
+        }
+        else
+        {
+            LeavePlayerOutSideTruck(playerTransform,truckDoor);
+        }
+       
+    }
+
+    private void LeavePlayerOutSideTruck(Transform playerTransform,TruckDoor truckDoor)
+    {
+        Transform exitPointTr = truckDoor.GetLeaveWayTransform();
+
+        playerTransform.SetParent(null);
+        playerTransform.position = exitPointTr.position;
+        playerTransform.rotation = Quaternion.identity;
+
+
+        EnablePlayerColliders(playerTransform);
+        isPlayerInside = false;
+    }
+
+    private void EnablePlayerColliders(Transform playerTransform)
+    {
+        CapsuleCollider[] colliders = playerTransform.GetComponents<CapsuleCollider>();
+        foreach (CapsuleCollider collider in colliders)
+        {
+            collider.enabled = true;
+        }
+
+        FirstPersonController.Instance.enabled = true;
+        playerTransform.GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    private void GetPlayerInTruck(Transform playerTransform)
+    {
+        playerTransform.SetParent(seatTransform);
+        playerTransform.localPosition = Vector3.zero;
+        playerTransform.localRotation = Quaternion.identity;
+
+
+        DisablePlayerColliders(playerTransform);
+    }
+
+    private void DisablePlayerColliders(Transform playerTransform)
+    {
+        CapsuleCollider[] colliders = playerTransform.GetComponents<CapsuleCollider>();
+        foreach (CapsuleCollider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
+        FirstPersonController.Instance.enabled = false;
+        playerTransform.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+}
