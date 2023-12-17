@@ -1,18 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Radio : MonoBehaviour
+public class Radio : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool canPlaySong = true;
+    private bool isPlaying = false;
+    private bool IsStartedPlaying = false; // Avoid To Multiple Invokes
+    private AudioSource audioSource;
+    [SerializeField]private float volume = 0.3f;
+    private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = volume;
+    }
+    public void Interact(Transform interactorTransform)
+    {
+        Debug.Log("Radio");
+
+        ToggleRadio();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ToggleRadio()
     {
-        
+        if (!canPlaySong) return;
+
+        isPlaying = !isPlaying;
+
+        if(isPlaying && !IsStartedPlaying)
+        {
+            IsStartedPlaying = true;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.Pause();
+            IsStartedPlaying = false;
+        }
     }
 }
