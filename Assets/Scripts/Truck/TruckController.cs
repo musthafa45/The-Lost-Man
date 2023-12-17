@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TruckController : MonoBehaviour
@@ -24,6 +25,9 @@ public class TruckController : MonoBehaviour
     [SerializeField] private Transform frontRightWheeTransform;
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
+
+    private bool isMoving = false;
+    private bool canMove = true;
 
     private void OnEnable()
     {
@@ -57,12 +61,22 @@ public class TruckController : MonoBehaviour
         horizontalInput = Input.GetAxis(HORIZONTAL);
         verticalInput = Input.GetAxis(VERTICAL);
         isBreaking = Input.GetKey(KeyCode.Space);
+
+        isMoving = horizontalInput != 0 || verticalInput != 0 ; 
     }
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        if (canMove)
+        {
+            frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
+            frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        }
+        else
+        {
+            ApplyBreaking();
+        }
+
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
     }
@@ -97,5 +111,16 @@ public class TruckController : MonoBehaviour
 ; wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public bool IsMoving()
+    {
+        Debug.Log("Is Driving " + isMoving);
+        return isMoving;
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
     }
 }

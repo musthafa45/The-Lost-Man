@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectHolder : MonoBehaviour
@@ -120,6 +121,31 @@ public class ObjectHolder : MonoBehaviour
         }
 
     }
+
+    public HoldableObject[] GetHoldingObjectsSO()
+    {
+        List<HoldableObject> holdingObjectsList = new List<HoldableObject>();
+
+        foreach (var pair in holdingObjects)
+        {
+            holdingObjectsList.Add(pair.Value);
+        }
+
+        return holdingObjectsList.ToArray();
+    }
+
+    public void RemoveHoldabe(HoldableObject holdableObject)
+    {
+        // Find the HoldPointData associated with the holdableObject in the dictionary
+        HoldPointData key = holdingObjects.FirstOrDefault(x => x.Value == holdableObject).Key;
+
+        if (key != null)
+        {
+            key.IsAccupied = false;
+            holdingObjects.Remove(key);
+        }
+    }
+
 
     [Serializable]
     private class HoldPointData
