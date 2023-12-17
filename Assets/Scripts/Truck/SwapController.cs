@@ -6,8 +6,7 @@ using UnityEngine;
 public class SwapController : MonoBehaviour
 {
     [SerializeField] private Transform seatTransform;
-    [SerializeField] private Transform leftExitWay;
-    [SerializeField] private Transform rightExitWay;
+
     private bool isPlayerInside = false;
     private void OnEnable()
     {
@@ -24,11 +23,16 @@ public class SwapController : MonoBehaviour
         if(!isPlayerInside)
         {
             GetPlayerInTruck(playerTransform);
+
+            EventManager.Instance.InvokePlayerGetsInTruck();
+
             isPlayerInside = true;
         }
         else
         {
             LeavePlayerOutSideTruck(playerTransform,truckDoor);
+
+            EventManager.Instance.InvokePlayerGetsOutTruck();
         }
        
     }

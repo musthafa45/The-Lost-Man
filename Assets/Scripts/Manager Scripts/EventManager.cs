@@ -27,6 +27,10 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnStaminaTopUpped;
 
     public event Action<Transform,TruckDoor> OnPlayerTryGetInTruck;
+
+    public event EventHandler OnPlayerGetsInTruck;
+    public event EventHandler OnPlayerGetsOutTruck;
+
     private void Awake()
     {
         Instance = this;
@@ -91,4 +95,14 @@ public class EventManager : MonoBehaviour
     {
         OnPlayerTryGetInTruck?.Invoke(playerTransform,truckDoor);
     }
+    public void InvokePlayerGetsInTruck()
+    {
+        OnPlayerGetsInTruck?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void InvokePlayerGetsOutTruck()
+    {
+       OnPlayerGetsOutTruck?.Invoke(this, EventArgs.Empty);
+    }
+
 }
