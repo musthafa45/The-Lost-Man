@@ -26,35 +26,68 @@ public class TruckController : MonoBehaviour
     [SerializeField] private Transform rearLeftWheelTransform;
     [SerializeField] private Transform rearRightWheelTransform;
 
+    [SerializeField] private Transform steeringWheelTransform;
+    [SerializeField] private float steeringWheelRotAngle = 90f;  // 90 to -90
+
     private bool isMoving = false;
     private bool canMove = true;
+    private bool isPlayerInside = false;
 
     private void OnEnable()
     {
         EventManager.Instance.OnPlayerGetsInTruck += (sender,e) =>
         {
-            this.enabled = true;
+            isPlayerInside = true;
         };
 
 
         EventManager.Instance.OnPlayerGetsOutTruck += (sender, e) =>
         {
-            ApplyBreaking();
-            this.enabled = false;
+            isPlayerInside = false;
         };
+
+        EventManager.Instance.OnPlayerTruckFlipped += EventManager_Instance_OnPlayerTruckFlipped;
     }
-    private void Start()
+    private void OnDisable()
     {
-        this.enabled = false;
-    }
-    private void FixedUpdate()
-    {
-        GetInput();
-        HandleMotor();
-        HandleSteering();
-        UpdateWheels();
+        EventManager.Instance.OnPlayerTruckFlipped -= EventManager_Instance_OnPlayerTruckFlipped;
     }
 
+    private void EventManager_Instance_OnPlayerTruckFlipped(object sender, EventArgs e)
+    {
+        isPlayerInside = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if(isPlayerInside)
+        {
+            GetInput();
+            HandleMotor();
+            HandleSteering();
+            UpdateWheels();
+            UpdateSteeringWheel();
+        }
+        else
+        {
+            HandleHandBrake();
+        }
+    }
+
+    private void UpdateSteeringWheel()
+    {
+        float rotationAmount = Mathf.Clamp(horizontalInput * steeringWheelRotAngle, -steeringWheelRotAngle, steeringWheelRotAngle);
+        steeringWheelTransform.localRotation = Quaternion.Euler(0f, 0f, -rotationAmount);
+    }
+
+
+    private void HandleHandBrake()
+    {
+        frontRightWheelCollider.brakeTorque = Mathf.Infinity;
+        frontLeftWheelCollider.brakeTorque = Mathf.Infinity;
+        rearLeftWheelCollider.brakeTorque = Mathf.Infinity;
+        rearRightWheelCollider.brakeTorque = Mathf.Infinity;
+    }
 
     private void GetInput()
     {
@@ -83,11 +116,22 @@ public class TruckController : MonoBehaviour
 
     private void ApplyBreaking()
     {
-        frontRightWheelCollider.brakeTorque = currentbreakForce;
-        frontLeftWheelCollider.brakeTorque = currentbreakForce;
-        rearLeftWheelCollider.brakeTorque = currentbreakForce;
-        rearRightWheelCollider.brakeTorque = currentbreakForce;
+        if (!canMove) // Stop instantly if the truck can't move
+        {
+            frontRightWheelCollider.brakeTorque = Mathf.Infinity;
+            frontLeftWheelCollider.brakeTorque = Mathf.Infinity;
+            rearLeftWheelCollider.brakeTorque = Mathf.Infinity;
+            rearRightWheelCollider.brakeTorque = Mathf.Infinity;
+        }
+        else // Apply regular braking force
+        {
+            frontRightWheelCollider.brakeTorque = currentbreakForce;
+            frontLeftWheelCollider.brakeTorque = currentbreakForce;
+            rearLeftWheelCollider.brakeTorque = currentbreakForce;
+            rearRightWheelCollider.brakeTorque = currentbreakForce;
+        }
     }
+
 
     private void HandleSteering()
     {
@@ -115,7 +159,6 @@ public class TruckController : MonoBehaviour
 
     public bool IsMoving()
     {
-        Debug.Log("Is Driving " + isMoving);
         return isMoving;
     }
 

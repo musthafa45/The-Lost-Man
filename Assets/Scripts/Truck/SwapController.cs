@@ -8,18 +8,30 @@ public class SwapController : MonoBehaviour
     [SerializeField] private Transform seatTransform;
 
     private bool isPlayerInside = false;
+    private Transform playerTransform;
+    private TruckDoor truckDoor;
+
     private void OnEnable()
     {
         EventManager.Instance.OnPlayerTryGetInTruck += EventManager_Instance_OnPlayerTryInteractTruckDoor;
+        EventManager.Instance.OnPlayerTruckFlipped += EventManager_Instance_OnPlayerTruckFlipped;
     }
 
     private void OnDisable()
     {
         EventManager.Instance.OnPlayerTryGetInTruck -= EventManager_Instance_OnPlayerTryInteractTruckDoor;
+        EventManager.Instance.OnPlayerTruckFlipped -= EventManager_Instance_OnPlayerTruckFlipped;
+    }
+    private void EventManager_Instance_OnPlayerTruckFlipped(object sender, EventArgs e)
+    {
+        LeavePlayerOutSideTruck(playerTransform, truckDoor);
     }
 
     private void EventManager_Instance_OnPlayerTryInteractTruckDoor(Transform playerTransform, TruckDoor truckDoor)
     {
+        this.playerTransform = playerTransform;
+        this.truckDoor = truckDoor;
+
         if(!isPlayerInside)
         {
             GetPlayerInTruck(playerTransform);
@@ -43,7 +55,7 @@ public class SwapController : MonoBehaviour
 
         playerTransform.SetParent(null);
         playerTransform.position = exitPointTr.position;
-        playerTransform.rotation = Quaternion.identity;
+        playerTransform.rotation = exitPointTr.rotation;
 
 
         EnablePlayerColliders(playerTransform);

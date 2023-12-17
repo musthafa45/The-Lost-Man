@@ -31,6 +31,8 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnPlayerGetsInTruck;
     public event EventHandler OnPlayerGetsOutTruck;
 
+    public event EventHandler OnPlayerTruckFlipped;
+
     private void Awake()
     {
         Instance = this;
@@ -105,4 +107,8 @@ public class EventManager : MonoBehaviour
        OnPlayerGetsOutTruck?.Invoke(this, EventArgs.Empty);
     }
 
+    public void InvokeTruckFlipped()
+    {
+        OnPlayerTruckFlipped?.Invoke(this, EventArgs.Empty);
+    }
 }
