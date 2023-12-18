@@ -31,7 +31,9 @@ public class Radio : MonoBehaviour, IInteractable
         if(isPlaying && !IsStartedPlaying)
         {
             IsStartedPlaying = true;
-            audioSource.Play();
+
+            audioSource.clip.LoadAudioData(); // Ensure audio data is fully loaded
+            audioSource.PlayDelayed(0.1f); // Delay the playback slightly to allow buffering
         }
         else
         {
@@ -39,4 +41,5 @@ public class Radio : MonoBehaviour, IInteractable
             IsStartedPlaying = false;
         }
     }
+
 }

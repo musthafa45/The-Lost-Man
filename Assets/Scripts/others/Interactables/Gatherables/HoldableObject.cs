@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,10 @@ using UnityEngine;
 public class HoldableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] private HoldableObjectSO holdableObjectSO;
+
+    private bool isThrowedByPlayer = false;
+    private bool isPlacedInTruck = false;
+
     public void Interact(Transform interactorTransform)
     {
         ObjectHolder objectHolder = FindObjectOfType<ObjectHolder>();
@@ -22,5 +27,22 @@ public class HoldableObject : MonoBehaviour, IInteractable
     public HoldableObjectSO GetHoldableObjectSO()
     {
         return holdableObjectSO;
+    }
+
+    public bool IsThrowedByPlayer()
+    {
+        return isThrowedByPlayer;
+    }
+    public bool IsPlacedInTruck()
+    {
+        return isPlacedInTruck;
+    }
+    public void SetIsThrowedByPlayer(bool isThrowedByPlayer)
+    {
+        this.isThrowedByPlayer = isThrowedByPlayer;
+    }
+    public void SetIsPlacedInTruck(bool isPlacedInTruck)
+    {
+        this.isPlacedInTruck = isPlacedInTruck;
     }
 }

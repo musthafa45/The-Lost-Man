@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Can
   throwForce: 300
   holdOffset: {x: 0, y: 0, z: 0}
+  canPlaceInTruck: 1

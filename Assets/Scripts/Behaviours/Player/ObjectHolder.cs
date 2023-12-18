@@ -54,6 +54,7 @@ public class ObjectHolder : MonoBehaviour
 
         void ThrowObject(HoldPointData holdPointData, HoldableObject holdableObj, Rigidbody rb)
         {
+            holdableObj.SetIsThrowedByPlayer(true);
             holdableObj.transform.SetParent(null);
             holdableObj.transform.gameObject.layer = LayerMask.NameToLayer("Interactable");
             rb.isKinematic = false;
@@ -92,6 +93,13 @@ public class ObjectHolder : MonoBehaviour
 
         void Set(HoldableObject holdableObject,HoldPointData holdPointData)
         {
+            if(holdableObject.IsPlacedInTruck())
+            {
+                FindObjectOfType<ObjectAlignmentAI>().RemovePlacedObject(holdableObject);
+            }
+
+            holdableObject.SetIsThrowedByPlayer(false);
+            holdableObject.SetIsPlacedInTruck(false);
             holdableObject.transform.SetParent(holdPointData.HoldPointTransform);
             holdableObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             holdableObject.gameObject.GetComponent<Collider>().isTrigger = true;
