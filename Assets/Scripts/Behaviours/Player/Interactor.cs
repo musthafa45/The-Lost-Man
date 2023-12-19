@@ -13,7 +13,7 @@ public class Interactor : MonoBehaviour
     #endregion
 
     [SerializeField] private Image crossHairImage;
-
+    private Vector3 cameraRayHitPoint;
 
     private void Start()
     {
@@ -47,6 +47,18 @@ public class Interactor : MonoBehaviour
     }
     private void CastRayUpdate()
     {
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit2, 999f))
+        {
+            if(hit2.collider != null)
+            {
+                cameraRayHitPoint = hit2.point;
+            }
+            else
+            {
+                cameraRayHitPoint = cameraTransform.forward * 999f;
+            }
+        }
+
         if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, interactRange, interactLayerMask))
         {
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward * interactRange,Color.green);
@@ -63,6 +75,10 @@ public class Interactor : MonoBehaviour
 
     }
 
+    public Vector3 GetCameraRayHitPoint()
+    {
+        return cameraRayHitPoint;
+    }
     private void OnDisable()
     {
         InputManager.Instance.inputActions.Player.InteractionKey.performed -= InteractionKey_performed;

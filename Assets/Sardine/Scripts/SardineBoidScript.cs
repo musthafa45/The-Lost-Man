@@ -5,23 +5,23 @@ public class SardineBoidScript : MonoBehaviour {
 	public Transform maneru;
 	public float speed=1.5f;
 	public GameObject[] eyes;
-	Rigidbody iwasirigid;
+	Rigidbody rb;
 	public SardineBoidsController sardineBoidsController;
 	public float maneruSpeed=1f;
 	
 	void Start () {
-		iwasirigid = GetComponent<Rigidbody> ();
+		rb = GetComponent<Rigidbody> ();
 		GetComponent<Animator> ().SetFloat ("Forward",speed);
 	}
 
 	void Update () {
-		Miru ();
-		Maneru ();
-		iwasirigid.velocity= transform.forward * speed;
+		Raycast();
+		Maneru();
+		rb.velocity= transform.forward * speed;
 	}
 
 
-	void Miru(){
+	void Raycast(){
 		RaycastHit hitInfo;
 		foreach (GameObject eye in eyes) {
 			if (Physics.Raycast (eye.transform.position, eye.transform.up, out hitInfo, 100f)) {

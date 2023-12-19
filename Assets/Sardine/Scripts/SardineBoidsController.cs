@@ -30,15 +30,20 @@ public class SardineBoidsController : MonoBehaviour {
 	}
 
 	void Update () {
-		meanPos = Vector3.zero;
-		for (int i=0; i<sardineCount; i++) {
-			meanPos=meanPos+sardines[i].transform.position;
+        meanPos = Vector3.zero;
 
-		}
-		meanPos = meanPos / sardineCount;
-		meanDummy.transform.position = meanPos;
+        for (int i = 0; i < sardineCount; i++)
+        {
+            meanPos += sardines[i].transform.position;
+        }
 
-		for (int i=0; i<sardineCount; i++) {
+        meanPos /= sardineCount;
+        meanPos.y = Mathf.Clamp(meanPos.y, 0f, 0.5f);
+
+        meanDummy.transform.position = meanPos;
+
+
+        for (int i=0; i<sardineCount; i++) {
 			Vector3 targetRelPos = meanPos - sardines[i].transform.position;
 			targetRelPos.Normalize();
 			float dottigawa = Vector3.Dot (targetRelPos,sardines[i].transform.right);

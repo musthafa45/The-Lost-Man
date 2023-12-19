@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pole
   throwForce: 2000
-  holdOffset: {x: 0.03, y: 0.6, z: -0.3}
+  holdOffset: {x: 0.2, y: 0.6, z: 0.05}
+  holdOffsetRot: {x: 0, y: 0, z: 0}
+  canPlaceInTruck: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class ObjectHolder : MonoBehaviour
 {
@@ -100,10 +101,15 @@ public class ObjectHolder : MonoBehaviour
 
             holdableObject.SetIsThrowedByPlayer(false);
             holdableObject.SetIsPlacedInTruck(false);
+
             holdableObject.transform.SetParent(holdPointData.HoldPointTransform);
+
             holdableObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             holdableObject.gameObject.GetComponent<Collider>().isTrigger = true;
+
             holdableObject.transform.localPosition = Vector3.zero + holdableObject.GetHoldableObjectSO().holdOffset;
+            holdableObject.transform.localEulerAngles = Vector3.zero + holdableObject.GetHoldableObjectSO().holdOffsetRot;
+
             holdPointData.IsAccupied = true;
             holdableObject.transform.gameObject.layer = LayerMask.NameToLayer("Default");
             holdableObject.transform.rotation = holdPointData.HoldPointTransform.rotation;
@@ -162,4 +168,6 @@ public class ObjectHolder : MonoBehaviour
         public Transform HoldPointTransform;
         public bool IsAccupied;
     }
+
+   
 }
