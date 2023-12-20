@@ -6,7 +6,7 @@ using UnityEngine;
 public class HoldableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] private HoldableObjectSO holdableObjectSO;
-
+    [SerializeField] private Transform objectToFollowTr;
     private bool isThrowedByPlayer = false;
     private bool isPlacedInTruck = false;
 
@@ -44,5 +44,10 @@ public class HoldableObject : MonoBehaviour, IInteractable
     public void SetIsPlacedInTruck(bool isPlacedInTruck)
     {
         this.isPlacedInTruck = isPlacedInTruck;
+    }
+
+    internal Transform GetObjectToFollowTransform()
+    {
+        return objectToFollowTr;
     }
 }

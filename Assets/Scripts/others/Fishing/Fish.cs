@@ -11,10 +11,23 @@ public class Fish : MonoBehaviour
     private List<Vector3> patrolPoints = new List<Vector3>();
     private int currentPatrolIndex = 0;
     private float speed;
+    private Animator animator;
+
+    [SerializeField] private HoldableObjectSO spearSO;
+    [SerializeField] private GatherableSO fishSO;
+    [SerializeField] private Transform toFollowTransform = null;
+
+    public enum FishState
+    {
+        Partrol,Captured
+    }
+    private FishState state;
 
     void Start()
     {
+        state = FishState.Partrol;
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         speed = Random.Range(minSpeed, maxSpeed);
         GeneratePatrolPoints();
         MoveToNextPatrolPoint();
@@ -24,16 +37,27 @@ public class Fish : MonoBehaviour
     {
         if (patrolPoints.Count == 0) return;
 
-        Vector3 direction = patrolPoints[currentPatrolIndex] - transform.position;
-        rb.velocity = direction.normalized * speed * Time.deltaTime;
-
-        // Rotate towards the next patrol point
-        RotateTowardsPoint(patrolPoints[currentPatrolIndex]);
-
-        if (Vector3.Distance(transform.position, patrolPoints[currentPatrolIndex]) < 0.1f)
+        if(state == FishState.Partrol)
         {
-            MoveToNextPatrolPoint();
+            Vector3 direction = patrolPoints[currentPatrolIndex] - transform.position;
+            rb.velocity = direction.normalized * speed * Time.deltaTime;
+
+            // Rotate towards the next patrol point
+            RotateTowardsPoint(patrolPoints[currentPatrolIndex]);
+
+            if (Vector3.Distance(transform.position, patrolPoints[currentPatrolIndex]) < 0.1f)
+            {
+                MoveToNextPatrolPoint();
+            }
         }
+        else if(state == FishState.Captured) 
+        { 
+            if(toFollowTransform != null)
+            {
+                transform.SetPositionAndRotation(toFollowTransform.position, toFollowTransform.rotation);
+            }
+        }
+      
     }
 
     private void GeneratePatrolPoints()
@@ -82,8 +106,29 @@ public class Fish : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 5f);
     }
 
-    private void OnDrawGizmos()
+
+    private void OnTriggerEnter(Collider other)
     {
-        // ... (same as your previous OnDrawGizmos method)
+        if (other != null && state == FishState.Partrol)
+        {
+            if(other.gameObject.TryGetComponent(out HoldableObject holdableObject))
+            {
+                HoldableObjectSO spearSO = holdableObject.GetHoldableObjectSO();
+
+                if(spearSO == this.spearSO && holdableObject.IsThrowedByPlayer())
+                {
+                    Debug.Log("Spear Hitted");
+                    toFollowTransform = holdableObject.GetObjectToFollowTransform();
+                    toFollowTransform.rotation = transform.rotation;
+                    animator.SetBool("IsFastSwim", true);
+
+                    gameObject.AddComponent<GatherableObject>().SetGatherableObjectSO(fishSO);
+                    gameObject.layer = LayerMask.NameToLayer("Interactable");
+
+                    state = FishState.Captured;
+                }
+               
+            }
+        }
     }
 }
