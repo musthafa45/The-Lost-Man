@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -12,6 +13,8 @@ public class ObjectHolder : MonoBehaviour
 
     [SerializeField] private ForceMode throwForceMode = ForceMode.Impulse;
 
+    private Transform camTransform;
+
     private Dictionary<HoldPointData,HoldableObject> holdingObjects = new(2);
     private void OnEnable()
     {
@@ -21,6 +24,11 @@ public class ObjectHolder : MonoBehaviour
     private void OnDisable()
     {
         InputManager.Instance.OnThrowKeyPerformed -= InputManager_Instance_OnThrowKeyPerformed;
+    }
+
+    private void Start()
+    {
+        camTransform = Camera.main.transform;
     }
 
     private void InputManager_Instance_OnThrowKeyPerformed(object sender, EventArgs e)
@@ -61,7 +69,9 @@ public class ObjectHolder : MonoBehaviour
             rb.isKinematic = false;
             holdableObj.gameObject.GetComponent<Collider>().isTrigger = false;
 
-            rb.AddForce(Camera.main.transform.forward * holdableObj.GetHoldableObjectSO().throwForce,throwForceMode);
+            holdableObj.transform.rotation = camTransform.rotation;
+            Vector3 forceDir = GetTargetDirection(holdableObj);
+            rb.AddForce(forceDir * holdableObj.GetHoldableObjectSO().throwForce, throwForceMode);
 
             holdingObjects.Remove(holdPointData);
             holdPointData.IsAccupied = false;
@@ -75,6 +85,29 @@ public class ObjectHolder : MonoBehaviour
             }
         }
 
+    }
+
+    private Vector3 GetTargetDirection(HoldableObject holdableObj)
+    {
+        Vector3 forceDir = Vector3.zero;
+        Ray ray = new()
+        {
+            origin = camTransform.position,
+            direction = camTransform.forward
+        };
+        if (Physics.Raycast(ray, out RaycastHit hit, 500f))
+        {
+            if (hit.collider != null)
+            {
+                forceDir = (hit.point - holdableObj.transform.position).normalized;
+            }
+        }
+        else
+        {
+            forceDir = (ray.GetPoint(10) - holdableObj.transform.position).normalized;
+        }
+
+        return forceDir;
     }
 
     public void SetParent(HoldableObject holdableObject)
