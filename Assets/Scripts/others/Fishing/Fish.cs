@@ -6,6 +6,7 @@ public class Fish : MonoBehaviour
 {
     [SerializeField] private float minSpeed = 20f;
     [SerializeField] private float maxSpeed = 40f;
+    [SerializeField] private float fishAlertRadius = 40f;
     private BoxCollider fishTankCollider;
     private Rigidbody rb;
     private List<Vector3> patrolPoints = new List<Vector3>();
@@ -13,15 +14,46 @@ public class Fish : MonoBehaviour
     private float speed;
     private Animator animator;
 
+    private float panicTimer = 0;
+    private float panictimerMax = 10;
+
     [SerializeField] private HoldableObjectSO spearSO;
     [SerializeField] private GatherableSO fishSO;
     [SerializeField] private Transform toFollowTransform = null;
 
     public enum FishState
     {
-        Partrol,Captured
+        Partrol,Captured,Panic
     }
     private FishState state;
+
+    private void OnEnable()
+    {
+        EventManager.Instance.OnPlayerThrowedSpear += EventManager_Instance_OnPlayerThrowedSpear;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.OnPlayerThrowedSpear -= EventManager_Instance_OnPlayerThrowedSpear;
+    }
+
+    private void EventManager_Instance_OnPlayerThrowedSpear(object sender, EventManager.OnPlayerThrowedSpearArgs e)
+    {
+        Alert(e.throwedPosition, e.impactRadius);     
+    }
+
+    private void Alert(Vector3 throwedPosition, float impactRadius)
+    {
+        float fishToPlayerDistance = Vector3.Distance(transform.position, throwedPosition);
+
+        if (fishToPlayerDistance < fishAlertRadius) // Spear throwed Near This Fish
+        {
+            Debug.Log("Im Alert");
+            if (state == FishState.Captured) return;
+
+            state = FishState.Panic;
+        }
+    }
 
     void Start()
     {
@@ -29,6 +61,7 @@ public class Fish : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         speed = Random.Range(minSpeed, maxSpeed);
+        panicTimer = panictimerMax;
         GeneratePatrolPoints();
         MoveToNextPatrolPoint();
     }
@@ -43,7 +76,7 @@ public class Fish : MonoBehaviour
             rb.velocity = direction.normalized * speed * Time.deltaTime;
 
             // Rotate towards the next patrol point
-            RotateTowardsPoint(patrolPoints[currentPatrolIndex]);
+            RotateTowardsPoint(patrolPoints[currentPatrolIndex],10f);
 
             if (Vector3.Distance(transform.position, patrolPoints[currentPatrolIndex]) < 0.1f)
             {
@@ -57,7 +90,32 @@ public class Fish : MonoBehaviour
                 transform.SetPositionAndRotation(toFollowTransform.position, toFollowTransform.rotation);
             }
         }
-      
+        else if (state == FishState.Panic)
+        {
+            panicTimer -= Time.deltaTime;
+
+            if (panicTimer < 0)
+            {
+                panicTimer = panictimerMax;
+                speed = Mathf.Lerp(speed, 10f, 5f); // Adjust the speed gradually using Mathf.Lerp
+                state = FishState.Partrol;
+            }
+            else
+            {
+                Vector3 direction = patrolPoints[currentPatrolIndex] - transform.position;
+                rb.velocity = direction.normalized * 300f * Time.deltaTime;
+
+                // Rotate towards the next patrol point
+                RotateTowardsPoint(patrolPoints[currentPatrolIndex], 30f);
+
+                if (Vector3.Distance(transform.position, patrolPoints[currentPatrolIndex]) < 0.1f)
+                {
+                    MoveToNextPatrolPoint();
+                }
+            }
+        }
+
+
     }
 
     private void GeneratePatrolPoints()
@@ -99,11 +157,11 @@ public class Fish : MonoBehaviour
         this.fishTankCollider = boxCollider;
     }
 
-    private void RotateTowardsPoint(Vector3 targetPosition)
+    private void RotateTowardsPoint(Vector3 targetPosition,float rotSpeed)
     {
         Vector3 direction = targetPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 5f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotSpeed);
     }
 
 

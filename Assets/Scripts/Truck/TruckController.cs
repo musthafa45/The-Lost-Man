@@ -46,16 +46,6 @@ public class TruckController : MonoBehaviour
             isPlayerInside = false;
         };
 
-        EventManager.Instance.OnPlayerTruckFlipped += EventManager_Instance_OnPlayerTruckFlipped;
-    }
-    private void OnDisable()
-    {
-        EventManager.Instance.OnPlayerTruckFlipped -= EventManager_Instance_OnPlayerTruckFlipped;
-    }
-
-    private void EventManager_Instance_OnPlayerTruckFlipped(object sender, EventArgs e)
-    {
-        isPlayerInside = false;
     }
 
     private void FixedUpdate()
@@ -151,8 +141,8 @@ public class TruckController : MonoBehaviour
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
-        Quaternion rot
-; wheelCollider.GetWorldPose(out pos, out rot);
+        Quaternion rot; 
+        wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
     }

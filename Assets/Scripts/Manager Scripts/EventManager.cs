@@ -31,7 +31,12 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnPlayerGetsInTruck;
     public event EventHandler OnPlayerGetsOutTruck;
 
-    public event EventHandler OnPlayerTruckFlipped;
+    public event EventHandler<OnPlayerThrowedSpearArgs> OnPlayerThrowedSpear;
+    public class OnPlayerThrowedSpearArgs : EventArgs
+    {
+        public Vector3 throwedPosition;
+        public float impactRadius;
+    }
 
     private void Awake()
     {
@@ -106,9 +111,12 @@ public class EventManager : MonoBehaviour
     {
        OnPlayerGetsOutTruck?.Invoke(this, EventArgs.Empty);
     }
-
-    public void InvokeTruckFlipped()
+    public void InvokeSpearThrowedTowardsFish(Vector3 throwedPosition,float impactRadius =10)
     {
-        OnPlayerTruckFlipped?.Invoke(this, EventArgs.Empty);
+        OnPlayerThrowedSpear?.Invoke(this, new OnPlayerThrowedSpearArgs
+        {
+            throwedPosition = throwedPosition,
+            impactRadius = impactRadius
+        });
     }
 }

@@ -642,6 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 20
   maxSpeed: 40
+  fishAlertRadius: 40
   spearSO: {fileID: 11400000, guid: 3ece8cb316a04d74f95d8e3f680765a3, type: 2}
   fishSO: {fileID: 11400000, guid: 4591eb7a6042b2042bf8b1146f69807a, type: 2}
   toFollowTransform: {fileID: 0}

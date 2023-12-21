@@ -14,17 +14,11 @@ public class SwapController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.OnPlayerTryGetInTruck += EventManager_Instance_OnPlayerTryInteractTruckDoor;
-        EventManager.Instance.OnPlayerTruckFlipped += EventManager_Instance_OnPlayerTruckFlipped;
     }
 
     private void OnDisable()
     {
         EventManager.Instance.OnPlayerTryGetInTruck -= EventManager_Instance_OnPlayerTryInteractTruckDoor;
-        EventManager.Instance.OnPlayerTruckFlipped -= EventManager_Instance_OnPlayerTruckFlipped;
-    }
-    private void EventManager_Instance_OnPlayerTruckFlipped(object sender, EventArgs e)
-    {
-        LeavePlayerOutSideTruck(playerTransform, truckDoor);
     }
 
     private void EventManager_Instance_OnPlayerTryInteractTruckDoor(Transform playerTransform, TruckDoor truckDoor)

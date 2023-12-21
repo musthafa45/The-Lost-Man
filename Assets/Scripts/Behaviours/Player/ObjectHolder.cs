@@ -70,7 +70,11 @@ public class ObjectHolder : MonoBehaviour
             holdableObj.gameObject.GetComponent<Collider>().isTrigger = false;
 
             holdableObj.transform.rotation = camTransform.rotation;
-            Vector3 forceDir = GetTargetDirection(holdableObj);
+
+            Vector3 forceDir = GetTargetDirection(holdableObj,out Vector3 hitTarget);
+            float radiusToHitPoint = (holdableObj.transform.position - hitTarget).magnitude;
+            Debug.Log("Distance To Target In Rad " + radiusToHitPoint);
+
             rb.AddForce(forceDir * holdableObj.GetHoldableObjectSO().throwForce, throwForceMode);
 
             holdingObjects.Remove(holdPointData);
@@ -82,14 +86,22 @@ public class ObjectHolder : MonoBehaviour
             if (holdableObj.GetHoldableObjectSO().Name == "Pole")
             {
                 holdableObj.GetComponent<Pole>().isThrowed = true;
+                StartCoroutine(CallEventPlayerThrowedSpear(radiusToHitPoint));
             }
         }
 
     }
 
-    private Vector3 GetTargetDirection(HoldableObject holdableObj)
+    private IEnumerator CallEventPlayerThrowedSpear(float radiusToHitPoint)
+    {
+        yield return new WaitForSeconds(0.2f);
+        EventManager.Instance.InvokeSpearThrowedTowardsFish(transform.position, radiusToHitPoint);
+    }
+
+    private Vector3 GetTargetDirection(HoldableObject holdableObj, out Vector3 hitTarget)
     {
         Vector3 forceDir = Vector3.zero;
+        Vector3 hitPosition = Vector3.zero;
         Ray ray = new()
         {
             origin = camTransform.position,
@@ -99,14 +111,17 @@ public class ObjectHolder : MonoBehaviour
         {
             if (hit.collider != null)
             {
+                hitPosition = hit.point;
                 forceDir = (hit.point - holdableObj.transform.position).normalized;
             }
         }
         else
         {
+            hitPosition = ray.GetPoint(10);
             forceDir = (ray.GetPoint(10) - holdableObj.transform.position).normalized;
         }
 
+        hitTarget = hitPosition;
         return forceDir;
     }
 
