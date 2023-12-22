@@ -4,14 +4,12 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour,IInteractable
 {
     public static event EventHandler OnAnyDoorKnobAnimFinished;
 
     [SerializeField] private GatherableSO validKeySO;
     [SerializeField] private Transform doorHinge;
-    [SerializeField] private Transform doorKnob;
-    [SerializeField] private Transform handTargetPos;
 
     [SerializeField] private float targetOpenAngle = -90f;
     [SerializeField] private float targetKnobAngle = 90f;
@@ -40,7 +38,7 @@ public class Door : MonoBehaviour
         KeyDoor,
         GhostDoor
     }
-    public void Interact()
+    public void Interact(Transform interactorTransform)
     {
         DoorToggle();
     }
@@ -72,14 +70,14 @@ public class Door : MonoBehaviour
                 if (isOpenedDoor)
                 {
                     // open Door
+                    EventManager.Instance.InvokeOnDoorOpen();
                     doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
-                    DoKnobAnimation();
                     Debug.Log("Door Opned");
                 }
                 else
                 {
                     //close Door
-                    doorHinge.DOLocalRotate(new Vector3(0, 0, 0), doorCloseDuration).SetEase(easeTypeClose);
+                    CloseDoor();
                     Debug.Log("Door Closed");
                 }
                 break; 
@@ -87,8 +85,9 @@ public class Door : MonoBehaviour
             case DoorType.KeyDoor:
                 if (isOpenedDoor)
                 {
-                     // open Door
-                     doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
+                    // open Door
+                    EventManager.Instance.InvokeOnDoorOpen();
+                    doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
                      Debug.Log("Door Opned");
                 }
                 else 
@@ -96,22 +95,17 @@ public class Door : MonoBehaviour
                     //close Door
                     CloseDoor();
                     Debug.Log("Door Locked");
-                    DoKnobAnimation();
                 }
                 break;
             case DoorType.GhostDoor:
                 if (isOpenedDoor && !isVictimTrapped)
                 {
                     // open Door
+                    EventManager.Instance.InvokeOnDoorOpen();
                     doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
-                    DoKnobAnimation();
                     canTrapVictim = true;
                     Debug.Log("Door Opened");
-                }
-                else
-                {
-                    DoKnobAnimation(); // just Do knob Animation
-                }
+                }  
                 break;
         }
 
@@ -158,17 +152,7 @@ public class Door : MonoBehaviour
     private void CloseDoor()
     {
         doorHinge.DOLocalRotate(new Vector3(0, 0, 0), doorOpenDuration).SetEase(easeTypeClose); // Close Door
-    }
-
-    private void DoKnobAnimation()
-    {
-        doorKnob.DOLocalRotate(new Vector3(0, 0, targetKnobAngle), knobRotateDuration).SetEase(Ease.InOutSine).OnComplete(() =>
-        {
-            doorKnob.DOLocalRotate(new Vector3(0, 0, 0), knobRotateDuration).OnComplete(() =>
-            {
-                OnAnyDoorKnobAnimFinished?.Invoke(this, EventArgs.Empty);
-            });
-        });
+        EventManager.Instance.InvokeOnDoorClosed();
     }
 
     private void CheckPlayerHasKey()
@@ -177,10 +161,4 @@ public class Door : MonoBehaviour
 
         isGotKey = EventManager.Instance.InvokeTryOpenDoor(validKeySO);
     }
-
-    public Transform GetHandTargetTransform()
-    {
-        return handTargetPos;
-    }
-
 }

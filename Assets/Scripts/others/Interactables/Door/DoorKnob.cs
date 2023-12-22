@@ -12,6 +12,6 @@ public class DoorKnob : MonoBehaviour, IInteractable
     }
     public void Interact(Transform interactorTransform)
     {
-        door.Interact();
+        //door.Interact();
     }
 }
