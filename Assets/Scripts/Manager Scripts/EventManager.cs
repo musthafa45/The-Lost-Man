@@ -38,13 +38,6 @@ public class EventManager : MonoBehaviour
         public float impactRadius;
     }
 
-    public event EventHandler OnPlayerOpensDoor;
-    public event EventHandler OnPlayerCloseDoor;
-
-    public static event EventHandler OnAnyOutHousePlayerEntered;
-    public static event EventHandler OnAnyOutHousePlayerExited;
-
-    public static event Action<float> OnAnyGetMicSoundData;
     private void Awake()
     {
         Instance = this;
@@ -125,29 +118,5 @@ public class EventManager : MonoBehaviour
             throwedPosition = throwedPosition,
             impactRadius = impactRadius
         });
-    }
-    public void InvokeOnDoorOpen()
-    {
-        OnPlayerOpensDoor?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void InvokeOnDoorClosed()
-    {
-        OnPlayerCloseDoor?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void InvokePlayerEnteredAnyOutHouse()
-    {
-       OnAnyOutHousePlayerEntered?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void InvokePlayerExitedAnyOutHouse()
-    {
-        OnAnyOutHousePlayerExited?.Invoke(this, EventArgs.Empty);
-    }
-
-    public void InvokeGetAnyMicOutPutData(float micSoundData)
-    {
-        OnAnyGetMicSoundData?.Invoke(micSoundData);
     }
 }
