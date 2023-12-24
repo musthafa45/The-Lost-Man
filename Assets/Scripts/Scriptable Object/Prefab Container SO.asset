@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8044e70c1c7a04cb9ece9408f66496, type: 3}
   m_Name: Prefab Container SO
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 7441307891700851856, guid: d183e658204f076469daf903d997a207,
-    type: 3}
-  EnemyPrefab: {fileID: 4301461361755637390, guid: 105e3fd8dda57ae44bc5297bd813d51b,
-    type: 3}
-  EnemyDummyPrefab: {fileID: 1651885167295430760, guid: ed57bdc1bf7cbd641a5f1291dcd9c77a,
-    type: 3}
-  InventorySlotPrefab: {fileID: 8332341193161745375, guid: 412c0dd691d8cfe46b08a365c716f53c,
-    type: 3}
+  PlayerPrefab: {fileID: 7441307891700851856, guid: d183e658204f076469daf903d997a207, type: 3}
+  EnemyPrefab: {fileID: 4301461361755637390, guid: 105e3fd8dda57ae44bc5297bd813d51b, type: 3}
+  EnemyDummyPrefab: {fileID: 1651885167295430760, guid: ed57bdc1bf7cbd641a5f1291dcd9c77a, type: 3}
+  InventorySlotPrefab: {fileID: 8332341193161745375, guid: 412c0dd691d8cfe46b08a365c716f53c, type: 3}
+  CoconutPrefab: {fileID: 2435004470000124891, guid: e0f953f0e42f51f4fa6903320d238772, type: 3}
+  StonePrefab: {fileID: 6669905462763643628, guid: 5819bb0f3307ac245918e5944842cf40, type: 3}

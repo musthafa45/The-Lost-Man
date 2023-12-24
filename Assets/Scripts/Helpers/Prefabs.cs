@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,14 @@ public class Prefabs : MonoBehaviour
         Instance = this;
     }
 
+    public GameObject GetCoconutPrefab()
+    {
+        return prefabSO.CoconutPrefab;
+    }
+    public GameObject GetStonePrefab()
+    {
+        return prefabSO.StonePrefab;
+    }
     public GameObject GetEnemyPrefab()
     {
         return prefabSO.EnemyPrefab;
@@ -30,5 +39,10 @@ public class Prefabs : MonoBehaviour
     public GameObject GetInventorySlotPrefab()
     {
         return prefabSO.InventorySlotPrefab;
+    }
+
+    public GameObject GetApplePrefab()
+    {
+        return prefabSO.ApplePrefab;
     }
 }
