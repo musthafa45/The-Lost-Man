@@ -26,7 +26,7 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnStaminaFinished;
     public event EventHandler OnStaminaTopUpped;
 
-    public event Action<Transform,TruckDoor> OnPlayerTryGetInTruck;
+    public event Action<Transform, TruckDoor> OnPlayerTryGetInTruck;
 
     public event EventHandler OnPlayerGetsInTruck;
     public event EventHandler OnPlayerGetsOutTruck;
@@ -38,6 +38,13 @@ public class EventManager : MonoBehaviour
         public float impactRadius;
     }
 
+    public event EventHandler OnPlayerOpensDoor;
+    public event EventHandler OnPlayerCloseDoor;
+
+    public static event EventHandler OnAnyOutHousePlayerEntered;
+    public static event EventHandler OnAnyOutHousePlayerExited;
+
+    public static event Action<float> OnAnyGetMicSoundData;
     private void Awake()
     {
         Instance = this;
@@ -55,7 +62,7 @@ public class EventManager : MonoBehaviour
 
     public void InvokeSelectedItemChanged()
     {
-        OnSelectedItemChanged?.Invoke(this,EventArgs.Empty);
+        OnSelectedItemChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void InvokeUseItemHealable(GatherableSO currentSelectedItem)
@@ -65,12 +72,12 @@ public class EventManager : MonoBehaviour
 
     public void InvokeInventoryItemsModified()
     {
-        OnInventoryItemsModified?.Invoke(this,EventArgs.Empty);
+        OnInventoryItemsModified?.Invoke(this, EventArgs.Empty);
     }
 
     public void InvokeInventoryOpened()
     {
-        OnInventoryOpened?.Invoke(this,EventArgs.Empty);
+        OnInventoryOpened?.Invoke(this, EventArgs.Empty);
     }
 
     public void InvokeInventoryClosed()
@@ -100,7 +107,7 @@ public class EventManager : MonoBehaviour
 
     public void InvokePlayerTryGetInTruck(Transform playerTransform, TruckDoor truckDoor)
     {
-        OnPlayerTryGetInTruck?.Invoke(playerTransform,truckDoor);
+        OnPlayerTryGetInTruck?.Invoke(playerTransform, truckDoor);
     }
     public void InvokePlayerGetsInTruck()
     {
@@ -109,14 +116,38 @@ public class EventManager : MonoBehaviour
 
     public void InvokePlayerGetsOutTruck()
     {
-       OnPlayerGetsOutTruck?.Invoke(this, EventArgs.Empty);
+        OnPlayerGetsOutTruck?.Invoke(this, EventArgs.Empty);
     }
-    public void InvokeSpearThrowedTowardsFish(Vector3 throwedPosition,float impactRadius =10)
+    public void InvokeSpearThrowedTowardsFish(Vector3 throwedPosition, float impactRadius = 10)
     {
         OnPlayerThrowedSpear?.Invoke(this, new OnPlayerThrowedSpearArgs
         {
             throwedPosition = throwedPosition,
             impactRadius = impactRadius
         });
+    }
+    public void InvokeOnDoorOpen()
+    {
+        OnPlayerOpensDoor?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void InvokeOnDoorClosed()
+    {
+        OnPlayerCloseDoor?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void InvokePlayerEnteredAnyOutHouse()
+    {
+        OnAnyOutHousePlayerEntered?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void InvokePlayerExitedAnyOutHouse()
+    {
+        OnAnyOutHousePlayerExited?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void InvokeGetAnyMicOutPutData(float micSoundData)
+    {
+        OnAnyGetMicSoundData?.Invoke(micSoundData);
     }
 }

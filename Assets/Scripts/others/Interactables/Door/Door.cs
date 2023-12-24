@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class Door : MonoBehaviour,IInteractable
+public class Door : MonoBehaviour, IInteractable
 {
     public static event EventHandler OnAnyDoorKnobAnimFinished;
 
@@ -12,6 +12,8 @@ public class Door : MonoBehaviour,IInteractable
     [SerializeField] private Transform doorHinge;
 
     [SerializeField] private float targetOpenAngle = -90f;
+    [SerializeField] private float targetKnobAngle = 90f;
+    [SerializeField] private float knobRotateDuration = 0.3f;
     [SerializeField] private float doorOpenDuration = 0.5f;
     [SerializeField] private float doorCloseDuration = 0.4f;
 
@@ -36,22 +38,22 @@ public class Door : MonoBehaviour,IInteractable
         KeyDoor,
         GhostDoor
     }
-    public void Interact(Transform playerTransform)
+    public void Interact(Transform interactorTransform)
     {
         DoorToggle();
     }
 
     private void DoorToggle()
     {
-        if(doorType == DoorType.NoKeyDoor || doorType == DoorType.GhostDoor)
+        if (doorType == DoorType.NoKeyDoor || doorType == DoorType.GhostDoor)
         {
             isOpenedDoor = !isOpenedDoor;
         }
-        else if(doorType == DoorType.KeyDoor)
+        else if (doorType == DoorType.KeyDoor)
         {
             CheckPlayerHasKey();
 
-            if(isGotKey)
+            if (isGotKey)
             {
                 isOpenedDoor = !isOpenedDoor;
             }
@@ -60,15 +62,16 @@ public class Door : MonoBehaviour,IInteractable
                 Debug.Log("No key You Have");
             }
         }
-       
 
-        switch(doorType)
+
+        switch (doorType)
         {
             case DoorType.NoKeyDoor:
                 if (isOpenedDoor)
                 {
                     // open Door
-                    OpenDoor();
+                    EventManager.Instance.InvokeOnDoorOpen();
+                    doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
                     Debug.Log("Door Opned");
                 }
                 else
@@ -77,50 +80,36 @@ public class Door : MonoBehaviour,IInteractable
                     CloseDoor();
                     Debug.Log("Door Closed");
                 }
-                break; 
-            
+                break;
+
             case DoorType.KeyDoor:
                 if (isOpenedDoor)
                 {
                     // open Door
-                    OpenDoor();
+                    EventManager.Instance.InvokeOnDoorOpen();
+                    doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
                     Debug.Log("Door Opned");
                 }
-                else 
+                else
                 {
                     //close Door
                     CloseDoor();
                     Debug.Log("Door Locked");
-                    
                 }
                 break;
             case DoorType.GhostDoor:
                 if (isOpenedDoor && !isVictimTrapped)
                 {
                     // open Door
-                    OpenDoor();
-                   
+                    EventManager.Instance.InvokeOnDoorOpen();
+                    doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
                     canTrapVictim = true;
                     Debug.Log("Door Opened");
-                }
-                else
-                {
-                    
                 }
                 break;
         }
 
-       
-    }
 
-    private void OpenDoor()
-    {
-        doorHinge.DOLocalRotate(new Vector3(0, targetOpenAngle, 0), doorOpenDuration).SetEase(easeTypeOpen);
-    }
-
-    private void CloseDoor()
-    {
-        doorHinge.DOLocalRotate(new Vector3(0, 0, 0), doorOpenDuration).SetEase(easeTypeClose); // Close Door
     }
 
     private void Update()
@@ -158,6 +147,12 @@ public class Door : MonoBehaviour,IInteractable
             CloseDoor();
             // Perform your door-closing action here
         }
+    }
+
+    private void CloseDoor()
+    {
+        doorHinge.DOLocalRotate(new Vector3(0, 0, 0), doorOpenDuration).SetEase(easeTypeClose); // Close Door
+        EventManager.Instance.InvokeOnDoorClosed();
     }
 
     private void CheckPlayerHasKey()
