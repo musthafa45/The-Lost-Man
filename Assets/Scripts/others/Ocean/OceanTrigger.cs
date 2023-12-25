@@ -5,35 +5,65 @@ using UnityEngine;
 
 public class OceanTrigger : MonoBehaviour
 {
-    [SerializeField] private float oceanTriggerRadius = 20f;
-    private Transform[] oceanTriggerPoints;
-    private Transform playerTransform = null;
+    [SerializeField] private float audioLerpSpeed = 5f;
+    [SerializeField] private float soundIntencityThreshold = 2f;
+    [SerializeField] private float islandCenterToBeachRadius = 200f;
+    [SerializeField] private Transform playerTransform;
+    private AudioSource audioSource;
 
     private void Awake()
     {
-        Transform[] childTransforms = transform.GetComponentsInChildren<Transform>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
-        // Exclude the parent transform and resize the array
-        oceanTriggerPoints = new Transform[childTransforms.Length - 1];
-        Array.Copy(childTransforms, 1, oceanTriggerPoints, 0, oceanTriggerPoints.Length);
-
-        playerTransform = FindObjectOfType<FirstPersonController>().transform;
+    private void OnEnable()
+    {
+        audioSource.Play();
     }
 
     private void Update()
     {
         if(playerTransform != null)
         {
-            foreach(Transform oceanTriggerTransform in oceanTriggerPoints)
-            {
-                float playerToOceanDis = Vector3.Distance(oceanTriggerTransform.position, playerTransform.position);
-                if(playerToOceanDis < oceanTriggerRadius)
-                {
-                    Debug.Log("Player Near To Ocean");
-                }
-            }
+            float playerToOceanDis = Vector3.Distance(transform.position, playerTransform.position);
+
+            audioSource.volume = Mathf.Lerp(audioSource.volume,playerToOceanDis / islandCenterToBeachRadius / soundIntencityThreshold, audioLerpSpeed);
+
+            //if (playerToOceanDis > islandCenterToBeachRadius)
+            //{
+            //    Debug.Log("Player Near To Ocean");
+            //    if (!audioSource.isPlaying)
+            //    {
+            //        audioSource.Play();
+            //        Debug.Log("Ocean Sound Started Play");
+            //    }
+
+            //}
+            //else
+            //{
+            //    if (audioSource.isPlaying)
+            //    {
+            //        audioSource.Stop();
+            //        Debug.Log("Ocean Sound Stopped Play");
+            //    }
+            //}
+
+        }
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+            Debug.Log("Ocean Sound Started Play");
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (playerTransform != null)
+        {
+            Gizmos.color = Color.magenta;
 
+            Gizmos.DrawWireSphere(transform.position, islandCenterToBeachRadius);
+        }
+    }
 
 }
