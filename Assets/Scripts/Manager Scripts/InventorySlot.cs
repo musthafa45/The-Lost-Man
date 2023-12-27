@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, ISelectHandler
+public class InventorySlot : MonoBehaviour,IDropHandler
 {
     private GatherableSO item;
-    private Button slotItemButton;
-
-
     [SerializeField] private Image itemIconImage;
+
+    [SerializeField] private Color selectedColor;
+    private Image bgImage;
 
     public void OnSelect(BaseEventData eventData)
     {
@@ -37,33 +37,29 @@ public class InventorySlot : MonoBehaviour, ISelectHandler
 
     private void Awake()
     {
-        slotItemButton = GetComponent<Button>();
+        bgImage = GetComponent<Image>();
+        //normalColor = bgImage.color;
 
-        slotItemButton.onClick.AddListener(() =>
-        {
-            if(item != null)
-            {
-                Debug.Log("Input From : " + item.gatherableObjectName +" Slot");
-                EventManager.Instance.InvokeOnSlotItemBtnPerformed(item);
-            }
-            else
-            {
-                Debug.Log("Input From : Empty Slot");
-                EventManager.Instance.InvokeOnSlotItemBtnPerformed(null);
-            }
+        //slotItemButton.onClick.AddListener(() =>
+        //{
+        //    if(item != null)
+        //    {
+        //        Debug.Log("Input From : " + item.gatherableObjectName +" Slot");
+        //        EventManager.Instance.InvokeOnSlotItemBtnPerformed(item);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Input From : Empty Slot");
+        //        EventManager.Instance.InvokeOnSlotItemBtnPerformed(null);
+        //    }
 
-        });
+        //});
 
         UpdateVisual();
 
         //Debug.Log("Item Slot Debug listners Count" + " " + slotItemButton.onClick.GetPersistentEventCount());
     }
    
-    //private void OnDisable()
-    //{
-    //    slotItemButton.onClick.RemoveAllListeners();
-    //}
-
     private void UpdateVisual()
     {
         if (item != null)
@@ -76,5 +72,34 @@ public class InventorySlot : MonoBehaviour, ISelectHandler
             itemIconImage.enabled = false;
         }
     }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        GameObject droppedObj = eventData.pointerDrag;
+        if(droppedObj.TryGetComponent(out DraggableItem droppedItem))
+        {
+            var dr = transform.GetComponentInChildren<DraggableItem>();
+            if(dr != null) Destroy(dr.gameObject);
+            droppedItem.SetParent(this.transform);
+        }
+    }
+
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    itemIconImage.raycastTarget = false;
+    //    oldParentTransform = transform.parent;
+    //    transform.SetParent(transform.root);
+    //    transform.SetAsLastSibling();
+    //}
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //   transform.position = Input.mousePosition;
+    //}
+
+    //public void OnEndDrag(PointerEventData eventData)
+    //{
+    //    itemIconImage.raycastTarget = true;
+    //    transform.SetParent(oldParentTransform);
+    //}
 
 }

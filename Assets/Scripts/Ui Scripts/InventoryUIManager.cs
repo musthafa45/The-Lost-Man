@@ -49,7 +49,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void OnItemSelected(GatherableSO item) // For Updating Ui description Purpose
     {
-        SeCurrentGetherableSO(item);
+        SetCurrentSelectedGetherableSO(item);
         UpdateDescriptionUI(item);
     }
 
@@ -66,7 +66,12 @@ public class InventoryUIManager : MonoBehaviour
         }
     }
 
-    private void SeCurrentGetherableSO(GatherableSO item)
+    public void SetCurrentSelectedGetherableSO(GatherableSO item)
+    {
+        currentSelectedItem = item;
+    }
+
+    public void SeCurrentSelectedGetherableSO(GatherableSO item,InventorySlot inventorySlot)
     {
         currentSelectedItem = item;
     }
@@ -215,9 +220,17 @@ public class InventoryUIManager : MonoBehaviour
         EventManager.Instance.OnSlotItemButtonPerformed += EventManager_Instance_OnSlotItemButtonPerformed;
     }
 
+    private void Update()
+    {
+        if(isInventoryUiOpened)
+        {
+            Cursor.lockState = CursorLockMode.None;   
+        }
+    }
+
     private void EventManager_Instance_OnSlotItemButtonPerformed(GatherableSO item)
     {
-        SeCurrentGetherableSO(item);
+        SetCurrentSelectedGetherableSO(item);
 
         UpdateDescriptionUI(item);
 

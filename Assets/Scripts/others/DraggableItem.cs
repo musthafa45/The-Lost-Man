@@ -5,51 +5,35 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerDownHandler
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private Image selectedItemImage;
-    [SerializeField] private Image draggableItemImage;
-    //private Transform orginParent;
+    [SerializeField] private Image itemImage;
+    private Transform orginParent;
 
-    private void Start()
-    {
-        selectedItemImage.gameObject.SetActive(false);
-    }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBegin Drag called");
-        draggableItemImage.raycastTarget = false;
+        itemImage.raycastTarget = false;
 
-        selectedItemImage.gameObject.SetActive(false);
-        //orginParent = transform.parent;
-        //transform.SetParent(transform.root);
-        //transform.SetAsLastSibling();
+        orginParent = transform.parent;
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("On Drag calling");
         transform.position = InputManager.Instance.GetMousePosition();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEnd Drag called");
-        RepairGridLayout();
-
-        draggableItemImage.raycastTarget = true;
-        //transform.SetParent(orginParent);
+        //RepairGridLayout();
+        itemImage.raycastTarget = true;
+        transform.SetParent(orginParent);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void SetParent(Transform parent)
     {
-        Debug.Log("On Pointer Down Performed On this Object");
-        selectedItemImage.gameObject.SetActive(true);
-    }
-
-    public void SetActivateSelectedVisual(bool active)
-    {
-        selectedItemImage.enabled = active;
+        this.orginParent = parent;
     }
 
     private void RepairGridLayout()

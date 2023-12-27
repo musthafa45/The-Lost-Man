@@ -28,26 +28,6 @@ public class OceanTrigger : MonoBehaviour
             float playerToOceanDis = Vector3.Distance(transform.position, playerTransform.position);
 
             audioSource.volume = Mathf.Lerp(audioSource.volume,playerToOceanDis / islandCenterToBeachRadius / soundIntencityThreshold, audioLerpSpeed);
-
-            //if (playerToOceanDis > islandCenterToBeachRadius)
-            //{
-            //    Debug.Log("Player Near To Ocean");
-            //    if (!audioSource.isPlaying)
-            //    {
-            //        audioSource.Play();
-            //        Debug.Log("Ocean Sound Started Play");
-            //    }
-
-            //}
-            //else
-            //{
-            //    if (audioSource.isPlaying)
-            //    {
-            //        audioSource.Stop();
-            //        Debug.Log("Ocean Sound Stopped Play");
-            //    }
-            //}
-
         }
 
         if (!audioSource.isPlaying)
