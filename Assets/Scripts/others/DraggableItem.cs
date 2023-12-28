@@ -9,7 +9,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [SerializeField] private Image itemImage;
     private Transform orginParent;
+    private GatherableSO gatherableObjectSO;
 
+    private void Awake()
+    {
+        gatherableObjectSO = GetComponentInParent<InventorySlot>().GetGatherableObjSO();
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemImage.raycastTarget = false;
@@ -26,7 +31,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //RepairGridLayout();
         itemImage.raycastTarget = true;
         transform.SetParent(orginParent);
     }
@@ -35,11 +39,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         this.orginParent = parent;
     }
-
-    private void RepairGridLayout()
+    public GatherableSO GetGatherableSO()
     {
-        transform.GetComponentInParent<GridLayoutGroup>().enabled = false;
-        transform.GetComponentInParent<GridLayoutGroup>().enabled = true;
+        return gatherableObjectSO;
     }
 
 }
+   

@@ -8,9 +8,6 @@ public class InventorySlot : MonoBehaviour,IDropHandler
     private GatherableSO item;
     [SerializeField] private Image itemIconImage;
 
-    [SerializeField] private Color selectedColor;
-    private Image bgImage;
-
     public void OnSelect(BaseEventData eventData)
     {
         EventManager.Instance.InvokeSelectedItemChanged();
@@ -37,7 +34,7 @@ public class InventorySlot : MonoBehaviour,IDropHandler
 
     private void Awake()
     {
-        bgImage = GetComponent<Image>();
+        //bgImage = GetComponent<Image>();
         //normalColor = bgImage.color;
 
         //slotItemButton.onClick.AddListener(() =>
@@ -55,7 +52,7 @@ public class InventorySlot : MonoBehaviour,IDropHandler
 
         //});
 
-        UpdateVisual();
+        //UpdateVisual();
 
         //Debug.Log("Item Slot Debug listners Count" + " " + slotItemButton.onClick.GetPersistentEventCount());
     }
@@ -78,10 +75,23 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         GameObject droppedObj = eventData.pointerDrag;
         if(droppedObj.TryGetComponent(out DraggableItem droppedItem))
         {
-            var dr = transform.GetComponentInChildren<DraggableItem>();
-            if(dr != null) Destroy(dr.gameObject);
+            var currentSlotItem = GetComponentInChildren<DraggableItem>();
+
+            if (currentSlotItem != null && currentSlotItem.GetGatherableSO() == null)
+            {
+                Destroy(currentSlotItem.gameObject);
+            }
+
             droppedItem.SetParent(this.transform);
+            item = droppedItem.GetGatherableSO();
+            UpdateVisual();
+
         }
+    }
+
+    public GatherableSO GetGatherableObjSO()
+    {
+        return item;
     }
 
     //public void OnBeginDrag(PointerEventData eventData)

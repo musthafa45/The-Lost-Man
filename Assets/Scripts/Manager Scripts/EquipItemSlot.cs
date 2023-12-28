@@ -3,41 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipItemSlot : MonoBehaviour
+public class EquipItemSlot : InventorySlot
 {
-    private GatherableSO item;
+    //private GatherableSO item;
 
-    [SerializeField] private Image itemIconImage;
+    //[SerializeField] private Image itemIconImage;
 
-    public void SetItem(GatherableSO pickuppedItemSO)
-    {
-        this.item = pickuppedItemSO;
+    //public void SetItem(GatherableSO pickuppedItemSO)
+    //{
+    //    this.item = pickuppedItemSO;
 
-        UpdateVisual();
-    }
-    private void Awake()
-    {
-        UpdateVisual();
-    }
+    //    UpdateVisual();
+    //}
+    //private void Awake()
+    //{
+    //    UpdateVisual();
+    //}
 
-    private void UpdateVisual()
-    {
-        if (item != null)
-        {
-            itemIconImage.enabled = true;
-            itemIconImage.sprite = item.gatherableImageSprite;
-        }
-        else
-        {
-            itemIconImage.enabled = false;
-        }
-    }
+    //private void UpdateVisual()
+    //{
+    //    if (item != null)
+    //    {
+    //        itemIconImage.enabled = true;
+    //        itemIconImage.sprite = item.gatherableImageSprite;
+    //    }
+    //    else
+    //    {
+    //        itemIconImage.enabled = false;
+    //    }
+    //}
 
-    public void ClearItem()
-    {
-        item = null;
-        UpdateVisual();
-    }
+    //public void ClearItem()
+    //{
+    //    item = null;
+    //    UpdateVisual();
+    //}
 
-    public bool IsEmpty() => item == null;
+    //public bool IsEmpty() => item == null;
+
+
+
 }
