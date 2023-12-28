@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Radio : MonoBehaviour, IInteractable
@@ -9,12 +6,14 @@ public class Radio : MonoBehaviour, IInteractable
     private bool isPlaying = false;
     private bool IsStartedPlaying = false; // Avoid To Multiple Invokes
     private AudioSource audioSource;
-    [SerializeField]private float volume = 0.3f;
+    [SerializeField] private float volume = 0.3f;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = volume;
     }
+
     public void Interact(Transform interactorTransform)
     {
         Debug.Log("Radio");
@@ -28,12 +27,10 @@ public class Radio : MonoBehaviour, IInteractable
 
         isPlaying = !isPlaying;
 
-        if(isPlaying && !IsStartedPlaying)
+        if (isPlaying && !IsStartedPlaying)
         {
             IsStartedPlaying = true;
-
-            audioSource.clip.LoadAudioData(); // Ensure audio data is fully loaded
-            audioSource.PlayDelayed(0.1f); // Delay the playback slightly to allow buffering
+            audioSource.Play(); // Play the assigned audio clip
         }
         else
         {
@@ -41,5 +38,4 @@ public class Radio : MonoBehaviour, IInteractable
             IsStartedPlaying = false;
         }
     }
-
 }
