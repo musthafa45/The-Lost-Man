@@ -5,18 +5,10 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour,IDropHandler
 {
-    private GatherableSO item;
-    [SerializeField] private Image itemIconImage;
+    protected GatherableSO item;
+    protected GameObject itemPrefab = null;
 
-    public void OnSelect(BaseEventData eventData)
-    {
-        EventManager.Instance.InvokeSelectedItemChanged();
-        
-        InventoryUIManager.Instance.OnItemSelected(item); // Need this For Update Ui Description
-
-        UpdateVisual();
-    }
-
+    public static event Action OnSlotItemModified;
     public bool IsEmpty() => item == null;
     
     public void SetItem(GatherableSO pickuppedItemSO)
@@ -32,61 +24,59 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         UpdateVisual();
     }
 
-    private void Awake()
+    private void Start()
     {
-        //bgImage = GetComponent<Image>();
-        //normalColor = bgImage.color;
-
-        //slotItemButton.onClick.AddListener(() =>
-        //{
-        //    if(item != null)
-        //    {
-        //        Debug.Log("Input From : " + item.gatherableObjectName +" Slot");
-        //        EventManager.Instance.InvokeOnSlotItemBtnPerformed(item);
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Input From : Empty Slot");
-        //        EventManager.Instance.InvokeOnSlotItemBtnPerformed(null);
-        //    }
-
-        //});
-
-        //UpdateVisual();
-
-        //Debug.Log("Item Slot Debug listners Count" + " " + slotItemButton.onClick.GetPersistentEventCount());
+        OnSlotItemModified += () => 
+        { 
+            RefreshSlotData(); 
+        };
     }
-   
-    private void UpdateVisual()
+
+    protected virtual void RefreshSlotData()
     {
-        if (item != null)
+        var draggableItem = GetComponentInChildren<DraggableItem>();
+        if(draggableItem == null)
         {
-            itemIconImage.enabled = true;
-            itemIconImage.sprite = item.gatherableImageSprite;
-        }
-        else
-        {
-            itemIconImage.enabled = false;
+            item = null; 
         }
     }
 
-    public void OnDrop(PointerEventData eventData)
+    protected virtual void UpdateVisual()
     {
-        GameObject droppedObj = eventData.pointerDrag;
-        if(droppedObj.TryGetComponent(out DraggableItem droppedItem))
-        {
-            var currentSlotItem = GetComponentInChildren<DraggableItem>();
+        var draggableItem = GetComponentInChildren<DraggableItem>();
 
-            if (currentSlotItem != null && currentSlotItem.GetGatherableSO() == null)
+        if(draggableItem == null && item != null)
+        {
+            if (itemPrefab != null)
             {
-                Destroy(currentSlotItem.gameObject);
+                Destroy(itemPrefab);
             }
 
-            droppedItem.SetParent(this.transform);
-            item = droppedItem.GetGatherableSO();
-            UpdateVisual();
+           itemPrefab = Instantiate(Prefabs.Instance.GetInventorySlotItemTemplate(),transform);
 
+           if(itemPrefab.TryGetComponent(out DraggableItem draggable))
+           {
+               draggable.SetGatherableObjSO(item);
+               draggable.UpdateSlotImage();
+           }
         }
+    }
+
+    public virtual void OnDrop(PointerEventData eventData)
+    {
+        if(transform.childCount == 0)
+        {
+            GameObject droppedObj = eventData.pointerDrag;
+            if (droppedObj.TryGetComponent(out DraggableItem droppedItem))
+            {
+                SetItem(droppedItem.GetGatherableSO());
+                UpdateVisual();
+
+                OnSlotItemModified?.Invoke();
+                Destroy(droppedObj);
+            }
+        }
+       
     }
 
     public GatherableSO GetGatherableObjSO()
@@ -94,22 +84,5 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         return item;
     }
 
-    //public void OnBeginDrag(PointerEventData eventData)
-    //{
-    //    itemIconImage.raycastTarget = false;
-    //    oldParentTransform = transform.parent;
-    //    transform.SetParent(transform.root);
-    //    transform.SetAsLastSibling();
-    //}
-    //public void OnDrag(PointerEventData eventData)
-    //{
-    //   transform.position = Input.mousePosition;
-    //}
-
-    //public void OnEndDrag(PointerEventData eventData)
-    //{
-    //    itemIconImage.raycastTarget = true;
-    //    transform.SetParent(oldParentTransform);
-    //}
-
+  
 }

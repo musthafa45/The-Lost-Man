@@ -18,3 +18,6 @@ MonoBehaviour:
   InventorySlotPrefab: {fileID: 8332341193161745375, guid: 412c0dd691d8cfe46b08a365c716f53c, type: 3}
   CoconutPrefab: {fileID: 2435004470000124891, guid: e0f953f0e42f51f4fa6903320d238772, type: 3}
   StonePrefab: {fileID: 6669905462763643628, guid: 5819bb0f3307ac245918e5944842cf40, type: 3}
+  ApplePrefab: {fileID: 2028447016856658908, guid: 0bac36f148bb1a149b4d97875dc3fe29, type: 3}
+  InventorySlotItemTemplatePrefab: {fileID: 5314995249087078884, guid: b0f7ebc12e177c94093b6cc4cc545139, type: 3}
+  InventoryEquipSlotItemTemplatePrefab: {fileID: 6223946540398278839, guid: 8944a6ec0919ff5439d65624b2070727, type: 3}

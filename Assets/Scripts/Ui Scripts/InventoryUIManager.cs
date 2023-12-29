@@ -432,17 +432,15 @@ public class InventoryUIManager : MonoBehaviour
             UpdateDescriptionUI(currentSelectedItem);
 
             EventManager.Instance.InvokeInventoryOpened();
-            FirstPersonController.SetCurserLockMode(true);
         }
         else
         {
-            commandMenuEquipable.gameObject.SetActive(false);
-            commandMenuUsable.gameObject.SetActive(false);
             inventoryUiMainVisual.gameObject.SetActive(false);
 
             objectDetailViewExitButton.gameObject.SetActive(false);
             SetInteractionToIgnoreBtns(true);
             DestroyDetailedViewObject();
+            Cursor.lockState = CursorLockMode.Locked;
 
             EventManager.Instance.InvokeInventoryClosed();
         }

@@ -45,4 +45,13 @@ public class Prefabs : MonoBehaviour
     {
         return prefabSO.ApplePrefab;
     }
+
+    public GameObject GetInventorySlotItemTemplate()
+    {
+        return prefabSO.InventorySlotItemTemplatePrefab;
+    }
+    public GameObject GetInventoryEquipSlotItemTemplate()
+    {
+        return prefabSO.InventoryEquipSlotItemTemplatePrefab;
+    }
 }

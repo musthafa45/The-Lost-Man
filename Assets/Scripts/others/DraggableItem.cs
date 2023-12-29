@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,17 +9,28 @@ using UnityEngine.UI;
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private Image itemImage;
+    [SerializeField] private GatherableSO gatherableObjectSO;
     private Transform orginParent;
-    private GatherableSO gatherableObjectSO;
+
 
     private void Awake()
     {
-        gatherableObjectSO = GetComponentInParent<InventorySlot>().GetGatherableObjSO();
+        UpdateSlotImage();
     }
+
+    public void UpdateSlotImage()
+    {
+        if (gatherableObjectSO != null)
+        {
+            itemImage.sprite = gatherableObjectSO.gatherableImageSprite;
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemImage.raycastTarget = false;
 
+        gatherableObjectSO = GetComponentInParent<InventorySlot>().GetGatherableObjSO();
         orginParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -39,10 +51,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         this.orginParent = parent;
     }
+
+    public void SetGatherableObjSO(GatherableSO gatherableSO)
+    {
+        this.gatherableObjectSO = gatherableSO;
+    }
     public GatherableSO GetGatherableSO()
     {
         return gatherableObjectSO;
     }
-
 }
    

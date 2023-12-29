@@ -12,4 +12,6 @@ public class PrefabSO : ScriptableObject
     public GameObject CoconutPrefab;
     public GameObject StonePrefab;
     public GameObject ApplePrefab;
+    public GameObject InventorySlotItemTemplatePrefab;
+    public GameObject InventoryEquipSlotItemTemplatePrefab;
 }

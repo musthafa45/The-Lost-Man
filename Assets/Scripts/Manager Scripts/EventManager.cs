@@ -41,10 +41,13 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnPlayerOpensDoor;
     public event EventHandler OnPlayerCloseDoor;
 
+    public event Action<EquipItemSlot, GatherableSO> OnEquipSlotModified;
+
     public static event EventHandler OnAnyOutHousePlayerEntered;
     public static event EventHandler OnAnyOutHousePlayerExited;
 
     public static event Action<float> OnAnyGetMicSoundData;
+    
     private void Awake()
     {
         Instance = this;
@@ -149,5 +152,10 @@ public class EventManager : MonoBehaviour
     public void InvokeGetAnyMicOutPutData(float micSoundData)
     {
         OnAnyGetMicSoundData?.Invoke(micSoundData);
+    }
+
+    public void InvokeOnEquipSlotModified(EquipItemSlot equipItemSlot,GatherableSO gatherableSO)
+    {
+        OnEquipSlotModified?.Invoke(equipItemSlot,gatherableSO);
     }
 }

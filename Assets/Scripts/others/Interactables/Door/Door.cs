@@ -6,14 +6,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    public static event EventHandler OnAnyDoorKnobAnimFinished;
 
     [SerializeField] private GatherableSO validKeySO;
     [SerializeField] private Transform doorHinge;
 
     [SerializeField] private float targetOpenAngle = -90f;
-    [SerializeField] private float targetKnobAngle = 90f;
-    [SerializeField] private float knobRotateDuration = 0.3f;
     [SerializeField] private float doorOpenDuration = 0.5f;
     [SerializeField] private float doorCloseDuration = 0.4f;
 

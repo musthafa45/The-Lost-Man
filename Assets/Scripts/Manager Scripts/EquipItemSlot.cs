@@ -1,46 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class EquipItemSlot : InventorySlot
 {
-    //private GatherableSO item;
 
-    //[SerializeField] private Image itemIconImage;
+    protected override void RefreshSlotData()
+    {
+        var draggableItem = GetComponentInChildren<DraggableItem>();
+        if (draggableItem == null)
+        {
+            item = null;
 
-    //public void SetItem(GatherableSO pickuppedItemSO)
-    //{
-    //    this.item = pickuppedItemSO;
+            EventManager.Instance.InvokeOnEquipSlotModified(this, null);
+        }
+    }
 
-    //    UpdateVisual();
-    //}
-    //private void Awake()
-    //{
-    //    UpdateVisual();
-    //}
+    protected override void UpdateVisual()
+    {
+        var draggableItem = GetComponentInChildren<DraggableItem>();
 
-    //private void UpdateVisual()
-    //{
-    //    if (item != null)
-    //    {
-    //        itemIconImage.enabled = true;
-    //        itemIconImage.sprite = item.gatherableImageSprite;
-    //    }
-    //    else
-    //    {
-    //        itemIconImage.enabled = false;
-    //    }
-    //}
+        if (draggableItem == null && item != null)
+        {
+            if (itemPrefab != null)
+            {
+                Destroy(itemPrefab);
+            }
 
-    //public void ClearItem()
-    //{
-    //    item = null;
-    //    UpdateVisual();
-    //}
+            itemPrefab = Instantiate(Prefabs.Instance.GetInventoryEquipSlotItemTemplate(), transform);
 
-    //public bool IsEmpty() => item == null;
+            if (itemPrefab.TryGetComponent(out DraggableItem draggable))
+            {
+                draggable.SetGatherableObjSO(item);
+                draggable.UpdateSlotImage();
+            }
+        }
+    }
 
+    public override void OnDrop(PointerEventData eventData)
+    {
+        if (transform.childCount == 0)
+        {
+            GameObject droppedObj = eventData.pointerDrag;
+            if (droppedObj.TryGetComponent(out DraggableItem droppedItem))
+            {
+               
+                SetItem(droppedItem.GetGatherableSO());
+                UpdateVisual();
 
+                if (droppedItem.GetGatherableSO() != null)
+                {
+                    EventManager.Instance.InvokeOnEquipSlotModified(this,droppedItem.GetGatherableSO());
+                }
+                else
+                {
+                    Debug.LogError("Draggable item Not Has Gatherable SO");
+                }
+                Destroy(droppedObj);
+                
+            }
+        }
+
+    }
 
 }
