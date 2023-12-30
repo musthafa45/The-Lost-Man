@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour,IDropHandler
+public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExitHandler
 {
     protected GatherableSO item;
     protected GameObject itemPrefab = null;
@@ -37,7 +37,8 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         var draggableItem = GetComponentInChildren<DraggableItem>();
         if(draggableItem == null)
         {
-            item = null; 
+            item = null;
+            ItemInfoHandlerUI.Instance.ClearInfoObject();
         }
     }
 
@@ -84,5 +85,20 @@ public class InventorySlot : MonoBehaviour,IDropHandler
         return item;
     }
 
-  
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(item != null)
+        {
+            ItemInfoHandlerUI.Instance.SetItemAndShow(item,transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("There Is No Item To Show Info In this Slot");
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ItemInfoHandlerUI.Instance.ClearInfoObject();
+    }
 }

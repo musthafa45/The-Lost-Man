@@ -54,4 +54,9 @@ public class Prefabs : MonoBehaviour
     {
         return prefabSO.InventoryEquipSlotItemTemplatePrefab;
     }
+
+    public GameObject GetItemInfoSingleUiPrefab()
+    {
+        return prefabSO.ItemInfoSingleUiTemplatePrefab;
+    }
 }

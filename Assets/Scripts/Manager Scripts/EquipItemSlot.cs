@@ -14,6 +14,7 @@ public class EquipItemSlot : InventorySlot
         {
             item = null;
 
+            ItemInfoHandlerUI.Instance.ClearInfoObject();
             EventManager.Instance.InvokeOnEquipSlotModified(this, null);
         }
     }

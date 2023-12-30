@@ -21,3 +21,4 @@ MonoBehaviour:
   ApplePrefab: {fileID: 2028447016856658908, guid: 0bac36f148bb1a149b4d97875dc3fe29, type: 3}
   InventorySlotItemTemplatePrefab: {fileID: 5314995249087078884, guid: b0f7ebc12e177c94093b6cc4cc545139, type: 3}
   InventoryEquipSlotItemTemplatePrefab: {fileID: 6223946540398278839, guid: 8944a6ec0919ff5439d65624b2070727, type: 3}
+  ItemInfoSingleUiTemplatePrefab: {fileID: 9027371986090553090, guid: 05a7ebbe4ebb417498057e82789cd640, type: 3}
