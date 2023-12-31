@@ -7,17 +7,26 @@ public class ItemInfoHandlerUI : MonoBehaviour
 {
     public static ItemInfoHandlerUI Instance { get; private set; }
     private GameObject infoPrefabSpawned = null;
+    [SerializeField] private Canvas layerCanvas;
 
     private void Awake()
     {
         Instance = this;
     }
+    private void Start()
+    { 
+        EventManager.Instance.OninventoryClosed += (sender,e) =>
+        {
+            DestroyInfoSpawned();
+        };
+    }
+
     public void SetItemAndShow(GatherableSO item,Vector3 position)
     {
         DestroyInfoSpawned();
 
-        infoPrefabSpawned = Instantiate(Prefabs.Instance.GetItemInfoSingleUiPrefab(), transform);
-        infoPrefabSpawned.transform.position = position + Vector3.left * 200f + Vector3.up * 150f;
+        infoPrefabSpawned = Instantiate(Prefabs.Instance.GetItemInfoSingleUiPrefab(), layerCanvas.transform);
+        infoPrefabSpawned.transform.position = position + Vector3.left * 140f + Vector3.up * 110f;
         if (infoPrefabSpawned.TryGetComponent(out ItemInfoSingleUI itemInfoSingleUI))
         {
             itemInfoSingleUI.SetUpInfoUiProps(item.gatherableObjectName, item.description[0]);
