@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExitHandler,IDragHandler
+public class InventorySlot : MonoBehaviour,IDropHandler/*,IPointerEnterHandler,IPointerExitHandler,IBeginDragHandler,IDragHandler*/
 {
     protected GatherableSO item;
     protected GameObject itemPrefab = null;
@@ -85,26 +85,31 @@ public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPo
         return item;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        var draggableItem = GetComponentInChildren<DraggableItem>();
-        if (item != null && draggableItem != null)
-        {
-            ItemInfoHandlerUI.Instance.SetItemAndShow(GetComponentInChildren<DraggableItem>().GetGatherableSO(), transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("There Is No Item To Show Info In this Slot");
-        }
-    }
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    var draggableItem = GetComponentInChildren<DraggableItem>();
+    //    if (item != null && draggableItem != null)
+    //    {
+    //        ItemInfoHandlerUI.Instance.SetItemAndShow(GetComponentInChildren<DraggableItem>().GetGatherableSO(), transform.position);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("There Is No Item To Show Info In this Slot");
+    //    }
+    //}
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        ItemInfoHandlerUI.Instance.ClearInfoObject();
-    }
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
+    //}
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        ItemInfoHandlerUI.Instance.ClearInfoObject();
-    }
+    //public void OnBeginDrag(PointerEventData eventData)
+    //{
+    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
+    //}
+
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
+    //}
 }

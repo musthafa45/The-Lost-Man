@@ -1,12 +1,9 @@
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private GatherableSO gatherableObjectSO;
@@ -34,11 +31,15 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         orginParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
+
+        ItemInfoHandlerUI.Instance.ClearInfoObject();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = InputManager.Instance.GetMousePosition();
+
+        ItemInfoHandlerUI.Instance.ClearInfoObject();
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -60,5 +61,23 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         return gatherableObjectSO;
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (gatherableObjectSO != null)
+        {
+            ItemInfoHandlerUI.Instance.SetItemAndShow(gatherableObjectSO, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("There Is No Item To Show Info In this Slot");
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ItemInfoHandlerUI.Instance.ClearInfoObject();
+    }
+
 }
-   
+
