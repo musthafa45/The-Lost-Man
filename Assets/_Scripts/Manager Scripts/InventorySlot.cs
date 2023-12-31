@@ -87,9 +87,10 @@ public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(item != null)
+        var draggableItem = GetComponentInChildren<DraggableItem>();
+        if (item != null && draggableItem != null)
         {
-            ItemInfoHandlerUI.Instance.SetItemAndShow(item,transform.position);
+            ItemInfoHandlerUI.Instance.SetItemAndShow(GetComponentInChildren<DraggableItem>().GetGatherableSO(), transform.position);
         }
         else
         {
