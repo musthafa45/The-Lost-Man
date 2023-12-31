@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExitHandler
+public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExitHandler,IDragHandler
 {
     protected GatherableSO item;
     protected GameObject itemPrefab = null;
@@ -99,6 +99,11 @@ public class InventorySlot : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPo
     }
 
     public void OnPointerExit(PointerEventData eventData)
+    {
+        ItemInfoHandlerUI.Instance.ClearInfoObject();
+    }
+
+    public void OnDrag(PointerEventData eventData)
     {
         ItemInfoHandlerUI.Instance.ClearInfoObject();
     }
