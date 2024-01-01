@@ -24,18 +24,26 @@ public class DayNightHandler : MonoBehaviour
     [Tooltip("Check Inside The Light Setting Ambient Sky Color in HDR")]
     [Header("Render Setting Sky Color")]
     [SerializeField] private Color dayColorSky;
-    [SerializeField] private Color eveningColorSky;
     [SerializeField] private Color nightColorSky;
+
+    [Header("Render Setting Fog Color")]
+    [SerializeField] private Color dayColorFog;
+    [SerializeField] private Color nightColorFog;
 
     [Header("Camera Backround Color")]
     [SerializeField] private Color dayColorCameraBg;
-    [SerializeField] private Color eveningColorCameraBg;
     [SerializeField] private Color nightColorCameraBg;
+
+    [Header("Directional Light Color")]
+    [SerializeField] private Light directionalLight;
+    [SerializeField] private Color dayColorDirectionalLight;
+    [SerializeField] private Color nightColorDirectionalLight;
 
     [Header("Water Shader Material Variables")]
     [SerializeField] private Material waterShaderMaterial;
- 
-    
+    [SerializeField] private Color dayColorWaterShader;
+    [SerializeField] private Color nightColorWaterShader;
+
     private void Update()
     {
         if (dayNightSliderValue <= 0.3f)
@@ -72,8 +80,15 @@ public class DayNightHandler : MonoBehaviour
             ScaleSky(nightSky, MapValue(dayNightSliderValue, 0.6f, 1f, 0f, 1f));
         }
 
-        //waterShaderMaterial.SetFloat("brightness", 5f);
-        RenderSettings.ambientSkyColor = Color.black;
+        // Lerp colors for different properties
+        RenderSettings.ambientSkyColor = Color.Lerp(dayColorSky, nightColorSky, MapValue(dayNightSliderValue, 0.0f, 1.0f, 0.0f, 1.0f));
+        RenderSettings.fogColor = Color.Lerp(dayColorFog, nightColorFog, MapValue(dayNightSliderValue, 0.0f, 1.0f, 0.0f, 1.0f));
+        Camera.main.backgroundColor = Color.Lerp(dayColorCameraBg, nightColorCameraBg, MapValue(dayNightSliderValue, 0.0f, 1.0f, 0.0f, 1.0f));
+        directionalLight.color = Color.Lerp(dayColorDirectionalLight, nightColorDirectionalLight, MapValue(dayNightSliderValue, 0.0f, 1.0f, 0.0f, 1.0f));
+
+        // Lerp material color
+        waterShaderMaterial.color = Color.Lerp(dayColorWaterShader, nightColorWaterShader, MapValue(dayNightSliderValue, 0.0f, 1.0f, 0.0f, 1.0f));
+
     }
 
     private void ScaleSky(GameObject skyObject, float scale)
