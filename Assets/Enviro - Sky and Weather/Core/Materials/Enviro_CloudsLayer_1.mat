@@ -2,26 +2,20 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enviro_CloudsLayer_1
   m_Shader: {fileID: 4800000, guid: 33a3df5c42ad8b94399677a41417d650, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHATEST_ON
-  - _EMISSION
+  m_ShaderKeywords: _ALPHATEST_ON _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -61,7 +55,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _CloudCover: -0.05
@@ -90,9 +83,8 @@ Material:
     - _Ambient: {r: 0.75, g: 0.75, b: 0.75, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CloudSpeed: {r: 0.01, g: 0.01, b: 0, a: 0}
-    - _CloudsColor: {r: 0.56497437, g: 0.5708269, b: 0.5747286, a: 0}
+    - _CloudsColor: {r: 0.5932603, g: 0.59548014, b: 0.5970471, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 0.753}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadingColor: {r: 0.8676499, g: 0.93428266, b: 1, a: 1}
     - _TintColor: {r: 0.65408933, g: 0.65075946, b: 0.64742965, a: 1}
-  m_BuildTextureStacks: []
