@@ -4310,6 +4310,171 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gasolineHoldableSO: {fileID: 11400000, guid: 29d8c6bd27c8aff4e860a4a4ed68a8c9, type: 2}
+--- !u!43 &629832838
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FOVColliderPoints
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 228
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 40
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 19.91535}
+      m_Extent: {x: 16.861467, y: 14.008295, z: 19.830458}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0200010000000300020000000b00050004000a000b0004000c00060005000b000c0005000d00070006000c000d0006000e00080007000d000e0007000f00090008000e000f00080011000b000a00100011000a0012000c000b00110012000b0013000d000c00120013000c0014000e000d00130014000d0015000f000e00140015000e001700110010001600170010001800120011001700180011001900130012001800190012001a001400130019001a0013001b00150014001a001b0014001d00170016001c001d0016001e00180017001d001e0017001f00190018001e001f00180020001a0019001f002000190021001b001a00200021001a0023001d001c00220023001c0024001e001d00230024001d0025001f001e00240025001e00260020001f00250026001f0027002100200026002700200002000300040005000200040006000200050007000200060008000200070009000200080000000100220001002300220001002400230001002500240001002600250001002700260003000000040000000a000400000010000a0000001600100000001c001600000022001c000100020009000f0001000900150001000f001b0001001500210001001b00270001002100
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 40
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 480
+    _typelessdata: 622422bde8710f3d82dbad3d622422bde8710fbd82dbad3d6224223de8710fbd82dbad3d6224223de8710f3d82dbad3dd8587dc1fa2160417dd3074282271bc1fa216041ccc2104234fd50c0f9216041194c154235fd5040f9216041194c154282271b41fa216041ccc21042d8587d41fa2160417dd30742302284c1e65608413eae0d428ad721c1e65608412500174243ff59c0e656084180bb1b4246ff5940e656084180bb1b428ad72141e65608412500174230228441e65608413eae0d4249e486c1900837405da31042643825c19108374012271a42348c5ec090083740b5fb1e42388c5e4090083740b5fb1e42643825419108374012271a4249e48641900837405da3104249e486c1920837c05da31042643825c1940837c012271a42348c5ec0920837c0b5fb1e42388c5e40920837c0b5fb1e4264382541940837c012271a4249e48641920837c05da31042302284c1e65608c13eae0d428ad721c1e65608c12500174243ff59c0e65608c180bb1b4246ff5940e65608c180bb1b428ad72141e65608c12500174230228441e65608c13eae0d42d8587dc1fa2160c17dd3074282271bc1fa2160c1ccc2104234fd50c0f92160c1194c154235fd5040f92160c1194c154282271b41fa2160c1ccc21042d8587d41fa2160c17dd30742
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 19.91535}
+    m_Extent: {x: 16.861467, y: 14.008295, z: 19.830458}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1001 &660753978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6398,171 +6563,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5601521e5fc5f7743993db1ebd891042, type: 3}
---- !u!43 &976676805
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FOVColliderPoints
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 228
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 40
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 19.91535}
-      m_Extent: {x: 16.861467, y: 14.008295, z: 19.830458}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 0200010000000300020000000b00050004000a000b0004000c00060005000b000c0005000d00070006000c000d0006000e00080007000d000e0007000f00090008000e000f00080011000b000a00100011000a0012000c000b00110012000b0013000d000c00120013000c0014000e000d00130014000d0015000f000e00140015000e001700110010001600170010001800120011001700180011001900130012001800190012001a001400130019001a0013001b00150014001a001b0014001d00170016001c001d0016001e00180017001d001e0017001f00190018001e001f00180020001a0019001f002000190021001b001a00200021001a0023001d001c00220023001c0024001e001d00230024001d0025001f001e00240025001e00260020001f00250026001f0027002100200026002700200002000300040005000200040006000200050007000200060008000200070009000200080000000100220001002300220001002400230001002500240001002600250001002700260003000000040000000a000400000010000a0000001600100000001c001600000022001c000100020009000f0001000900150001000f001b0001001500210001001b00270001002100
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 40
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 480
-    _typelessdata: 622422bde8710f3d82dbad3d622422bde8710fbd82dbad3d6224223de8710fbd82dbad3d6224223de8710f3d82dbad3dd8587dc1fa2160417dd3074282271bc1fa216041ccc2104234fd50c0f9216041194c154235fd5040f9216041194c154282271b41fa216041ccc21042d8587d41fa2160417dd30742302284c1e65608413eae0d428ad721c1e65608412500174243ff59c0e656084180bb1b4246ff5940e656084180bb1b428ad72141e65608412500174230228441e65608413eae0d4249e486c1900837405da31042643825c19108374012271a42348c5ec090083740b5fb1e42388c5e4090083740b5fb1e42643825419108374012271a4249e48641900837405da3104249e486c1920837c05da31042643825c1940837c012271a42348c5ec0920837c0b5fb1e42388c5e40920837c0b5fb1e4264382541940837c012271a4249e48641920837c05da31042302284c1e65608c13eae0d428ad721c1e65608c12500174243ff59c0e65608c180bb1b4246ff5940e65608c180bb1b428ad72141e65608c12500174230228441e65608c13eae0d42d8587dc1fa2160c17dd3074282271bc1fa2160c1ccc2104234fd50c0f92160c1194c154235fd5040f92160c1194c154282271b41fa2160c1ccc21042d8587d41fa2160c17dd30742
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 19.91535}
-    m_Extent: {x: 16.861467, y: 14.008295, z: 19.830458}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &984039096
 GameObject:
   m_ObjectHideFlags: 0
@@ -7649,7 +7649,7 @@ Terrain:
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 200
-  m_DetailObjectDensity: 1
+  m_DetailObjectDensity: 0.5
   m_HeightmapPixelError: 10
   m_SplatMapDistance: 800
   m_HeightmapMaximumLOD: 0
@@ -10406,6 +10406,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 423866, guid: 6c2bb458d4ac1614485f1c8ba5adb8f9, type: 3}
   m_PrefabInstance: {fileID: 308744969}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1468546666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1967707348568356, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_Name
+      value: Prefab_Wind
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921507568758886, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8dfd17a03533a0241b37daf2264ebdfd, type: 3}
 --- !u!1001 &1475059612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14313,6 +14370,374 @@ MonoBehaviour:
   - AlignPointTransform: {fileID: 811755166}
     holdableObjectTransform: {fileID: 0}
     isAccupied: 0
+--- !u!1 &1932953831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932953833}
+  - component: {fileID: 1932953832}
+  m_Layer: 0
+  m_Name: Vegetation Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1932953832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932953831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f710250abab6f24a954bdf3c3c1ac64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  terrains:
+  - {fileID: 1108940591}
+  visibleTerrainsOnly: 0
+  treeTypes:
+  - enabled: 1
+    name: prefab_Baked_00_Poplar_plant_A
+    seed: 5992
+    probability: 30
+    collisionCheck: 1
+    rejectUnderwater: 1
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    instanceCount: 425
+    prefabs:
+    - index: 0
+      probability: 100
+      prefab: {fileID: 1393690688037064, guid: ff65aadf786301349ad5adaa59887e8a, type: 3}
+    - index: 1
+      probability: 100
+      prefab: {fileID: 1881623316461446, guid: be7ac6d51e45ddc45b142f7aa518144b, type: 3}
+    - index: 2
+      probability: 100
+      prefab: {fileID: 1998940318527132, guid: ed33108025b17bb47b1e57c0a30b7b1c, type: 3}
+    - index: 3
+      probability: 100
+      prefab: {fileID: 1939283450936992, guid: 52f791fddcc0aa647b5eae5159898f2c, type: 3}
+    - index: 4
+      probability: 100
+      prefab: {fileID: 1638350609280834, guid: 69e05313bc41dce4bbfb9f7f4473e56c, type: 3}
+    - index: 5
+      probability: 100
+      prefab: {fileID: 1494755861476960, guid: a5af712a450b6144fb8f0d3978b9321c, type: 3}
+    - index: 6
+      probability: 100
+      prefab: {fileID: 1312413945446046, guid: 6dc76beee7a1e3e41a2aa1cdc621a10f, type: 3}
+    - index: 7
+      probability: 100
+      prefab: {fileID: 1402111574464218, guid: 4d90023cd72b4ba49892929eaa7167ba, type: 3}
+    - index: 8
+      probability: 100
+      prefab: {fileID: 1014933670322060, guid: e3e7168f4c0f9484ca684ac0c6935854, type: 3}
+    - index: 9
+      probability: 100
+      prefab: {fileID: 1803307998824950, guid: 82d61be7aee4a6b488b38ae13b7820c4, type: 3}
+    - index: 10
+      probability: 100
+      prefab: {fileID: 1261653605317142, guid: 9afb490d15ab71c43bfc1e136fff6391, type: 3}
+    distance: 5
+    scaleRange: {x: 0.8, y: 1.2}
+    sinkAmount: 0
+  - enabled: 1
+    name: prefab_s_rock_01
+    seed: 8457
+    probability: 30
+    collisionCheck: 1
+    rejectUnderwater: 0
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    - name: layer_Cliff_1_DiffuseCliff_1_Normaleda51f90c7f37482
+      layerID: 6
+      threshold: 0
+    - name: layer_Cliff_2_DiffuseCliff_2_Normaleda51f90c7f37482
+      layerID: 7
+      threshold: 0
+    instanceCount: 173
+    prefabs:
+    - index: 11
+      probability: 100
+      prefab: {fileID: 1342137920590926, guid: af30743ba20df6f4ea25c01ff182e2fc, type: 3}
+    - index: 12
+      probability: 100
+      prefab: {fileID: 1960502298754828, guid: 65ee0b8c9bc498b4ea716a2a31805919, type: 3}
+    - index: 13
+      probability: 100
+      prefab: {fileID: 1861099641242196, guid: 7ec17d04f78c6cc4ebe74b50def1c98d, type: 3}
+    - index: 14
+      probability: 100
+      prefab: {fileID: 1009645697504610, guid: a69b80b4b90e6314f9c82583268e0b11, type: 3}
+    - index: 15
+      probability: 100
+      prefab: {fileID: 1446893933530256, guid: d0d730af5139dcc44bdcb2117da227b0, type: 3}
+    - index: 16
+      probability: 100
+      prefab: {fileID: 1809221509254096, guid: afbb2b508d079274db9696dcb6658dd4, type: 3}
+    distance: 10
+    scaleRange: {x: 0.8, y: 1.2}
+    sinkAmount: 0
+  grassPrefabs:
+  - enabled: 1
+    name: Grass_A
+    seed: 0
+    probability: 40
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    instanceCount: 195499
+    index: 0
+    type: 1
+    renderAsBillboard: 1
+    prefab: {fileID: 0}
+    gpuInstancing: 0
+    holeEdgePadding: 0
+    alignToGround: 0
+    positionJitter: 33
+    useDensityScaling: 1
+    density: 5
+    billboard: {fileID: 2800000, guid: c6a916989b92ad641abb97317d1a3a90, type: 3}
+    mainColor: {r: 1, g: 1, b: 1, a: 1}
+    secondaryColor: {r: 1, g: 1, b: 1, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 0.5, y: 1}
+    minMaxWidth: {x: 0.5, y: 1}
+    noiseSize: 0.1
+  - enabled: 1
+    name: Grass_B
+    seed: 0
+    probability: 80
+    collisionCheck: 0
+    rejectUnderwater: 0
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    instanceCount: 388670
+    index: 1
+    type: 1
+    renderAsBillboard: 1
+    prefab: {fileID: 0}
+    gpuInstancing: 0
+    holeEdgePadding: 0
+    alignToGround: 0
+    positionJitter: 33
+    useDensityScaling: 1
+    density: 5
+    billboard: {fileID: 2800000, guid: bb0d5eea483852c48ae3a1202ce4aa73, type: 3}
+    mainColor: {r: 1, g: 1, b: 1, a: 1}
+    secondaryColor: {r: 1, g: 1, b: 1, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 0.6, y: 1}
+    minMaxWidth: {x: 0.6, y: 1}
+    noiseSize: 0.1
+  - enabled: 1
+    name: prefab_Terrain_flower_chamomile_01_detailed_1
+    seed: 464763039
+    probability: 1
+    collisionCheck: 0
+    rejectUnderwater: 1
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    instanceCount: 3973
+    index: 2
+    type: 0
+    renderAsBillboard: 0
+    prefab: {fileID: 1149985028797610, guid: 6cf1c3488be28a048a2448d6bc63177b, type: 3}
+    gpuInstancing: 1
+    holeEdgePadding: 0
+    alignToGround: 0
+    positionJitter: 0
+    useDensityScaling: 1
+    density: 1
+    billboard: {fileID: 0}
+    mainColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    secondaryColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 1, y: 2}
+    minMaxWidth: {x: 1, y: 2}
+    noiseSize: 0.1
+  - enabled: 1
+    name: prefab_Terrain_flower_common_chicory_01_cross_1
+    seed: 111543256
+    probability: 1
+    collisionCheck: 0
+    rejectUnderwater: 1
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    instanceCount: 3750
+    index: 3
+    type: 0
+    renderAsBillboard: 0
+    prefab: {fileID: 1163507730701434, guid: 82b508e0cec5a094ebd450b6398f5c28, type: 3}
+    gpuInstancing: 1
+    holeEdgePadding: 0
+    alignToGround: 0
+    positionJitter: 0
+    useDensityScaling: 1
+    density: 1
+    billboard: {fileID: 0}
+    mainColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    secondaryColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 1, y: 2}
+    minMaxWidth: {x: 1, y: 2}
+    noiseSize: 0.1
+  - enabled: 1
+    name: prefab_Terrain_flower_common_poppy_01_cross_1
+    seed: 1714082259
+    probability: 1
+    collisionCheck: 0
+    rejectUnderwater: 1
+    heightRange: {x: 0, y: 1000}
+    slopeRange: {x: 0, y: 60}
+    curvatureRange: {x: 0, y: 1}
+    layerMasks:
+    - name: layer_Mossy_Rock_DiffuseMossy_Rock_Normal2023054508611406
+      layerID: 2
+      threshold: 0
+    - name: layer_Grass_1_DiffuseGrass_1_Normal2023054508611406
+      layerID: 4
+      threshold: 0
+    - name: layer_Grass_2_DiffuseGrass_2_Normal2023054508611406
+      layerID: 5
+      threshold: 0
+    instanceCount: 3882
+    index: 4
+    type: 0
+    renderAsBillboard: 0
+    prefab: {fileID: 1611213609137540, guid: 90f481375181c334b85c191128ebd827, type: 3}
+    gpuInstancing: 1
+    holeEdgePadding: 0
+    alignToGround: 0
+    positionJitter: 0
+    useDensityScaling: 1
+    density: 1
+    billboard: {fileID: 0}
+    mainColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    secondaryColor: {r: 0.2627451, g: 0.9764706, b: 0.16470589, a: 1}
+    linkColors: 1
+    minMaxHeight: {x: 1, y: 2}
+    minMaxWidth: {x: 1, y: 2}
+    noiseSize: 0.1
+  terrainSettings:
+    drawTreesAndFoliage: 1
+    preservePrefabLayer: 1
+    treeLightProbes: 0
+    treeDistance: 1000
+    billboardStart: 300
+    maxMeshTrees: 50
+    detailScattermode: 0
+    grassDistance: 200
+    grassDensity: 1
+    windStrength: 0.15
+    windSpeed: 1
+    windFrequency: 2
+    wintTint: {r: 1, g: 1, b: 1, a: 1}
+  cellSize: 64
+  cellDivisions: 4
+  highPrecisionCollision: 1
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  terrainMinMaxHeight: {x: 11.16621, y: 31.782394}
+  detailResolution: 128
+  detailResolutionIndex: 0
+  grassPatchSize: 128
+  grassPatchSizeIndex: 4
+  tempColliders: []
+  waterHeight: 21
+  autoRespawnTrees: 1
+--- !u!4 &1932953833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932953831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1947901432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26689,7 +27114,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 976676805}
+  m_Mesh: {fileID: 629832838}
 --- !u!114 &2285314318940010065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39605,4 +40030,6 @@ SceneRoots:
   - {fileID: 1485875589}
   - {fileID: 2027214993}
   - {fileID: 1345750705}
+  - {fileID: 1468546666}
   - {fileID: 1876251710}
+  - {fileID: 1932953833}
