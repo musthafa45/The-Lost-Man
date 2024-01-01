@@ -15,7 +15,385 @@ MonoBehaviour:
   ShortKey: 0
   Groups:
   - GroupName: Rocks & Stones
-    Items: []
+    Items:
+    - Name: prefab_beech_forest_stones_01_1
+      GameObjectVariants:
+      - {fileID: 8745562623447073471, guid: 244fe7240ba55ae4aab622581df24828, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_2
+      GameObjectVariants:
+      - {fileID: 1236898795652179981, guid: 4de5798c58a725e45b59a64a9cbae3d8, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_3
+      GameObjectVariants:
+      - {fileID: 124529913939545404, guid: c1836178b61f5254cb4a664b29e0d5ab, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_4
+      GameObjectVariants:
+      - {fileID: 4296641989554866986, guid: 4874f83364e7c64458dded565ba8ef72, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_5
+      GameObjectVariants:
+      - {fileID: 7046631540937994666, guid: fd7869b37f2a04649925a66f439e4d23, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_6
+      GameObjectVariants:
+      - {fileID: 3218859338934444687, guid: a99bc79ba00cffc45aac0ca501d572e5, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_7
+      GameObjectVariants:
+      - {fileID: 580224869951649583, guid: f2a0834c084ba2c4c946b63903d45b9f, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_8
+      GameObjectVariants:
+      - {fileID: 7775791737395211612, guid: cccbc50d35fd3ab4fa5f0f1b5f730051, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_9
+      GameObjectVariants:
+      - {fileID: 5440648434039081930, guid: ea3d7c31eacb8344ab6bf393a376a1dc, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_10
+      GameObjectVariants:
+      - {fileID: 6608502843660117147, guid: 4cc70b80664d31741b0b2ca8b98274f9, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_11
+      GameObjectVariants:
+      - {fileID: 9137900202239688950, guid: 961157c2191626e409398083c47bf033, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_12
+      GameObjectVariants:
+      - {fileID: 3783054325739327014, guid: 7b4b23d69b2c6e149a6e6c6a6c4fd731, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_13
+      GameObjectVariants:
+      - {fileID: 5971110055264604586, guid: f76ec252d4d58fb40a029fe9b5f7f61a, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
+    - Name: prefab_beech_forest_stones_01_14
+      GameObjectVariants:
+      - {fileID: 7566276046555049618, guid: b2e75757887dfab449c921a7a25078b1, type: 3}
+      Rotation:
+        Constant: {x: 0, y: 0, z: 0}
+        Min: {x: 0, y: 0, z: 0}
+        Max: {x: 0, y: 360, z: 0}
+        Mode: 1
+      Scale:
+        Mode: 3
+        MinScale: {x: 1, y: 1, z: 1}
+        MaxScale: {x: 1, y: 1, z: 1}
+        UnitformScaling: 1
+      AdvancedOptions:
+        AllowPlacementCollisions: 0
+        MultiplyPrefabScale: 1
+        UsePrefabRotation: 0
+        UsePrefabHeight: 1
+        UseIndividualGroundHeight: 1
+        AllowCollision: 0
+        SpacingFactor: 1
+        RotationOffset: {x: 0, y: 0, z: 0}
+        NameType: 0
+      IsAdvancesOptionsOpenInEditor: 0
+      IsVariantsOpen: 0
+      VariantsScroll: {x: 0, y: 0}
+      IsOpenInEditor: 1
     NewGroupItem:
       Name: 
       GameObjectVariants:
