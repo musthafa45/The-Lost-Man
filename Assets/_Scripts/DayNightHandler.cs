@@ -1,5 +1,3 @@
-using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
