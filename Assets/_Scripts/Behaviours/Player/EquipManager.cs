@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using ProjectMiamiTestInventory;
 using UnityEngine;
@@ -13,10 +15,11 @@ public class EquipManager : MonoBehaviour
     private bool isGotTorch = false;
     private bool isTorchActivated;
 
-    private GameObject equippedItem;
+    private List<EquipData> equipmentData;
     private void Awake()
     {
         Instance = this;
+        equipmentData = new List<EquipData>(2);
     }
     private void OnEnable()
     {
@@ -29,30 +32,60 @@ public class EquipManager : MonoBehaviour
         EventManager.Instance.OnEquipableItemEquipped += EventManager_Instance_OnEquipableItemEquipped;
         EventManager.Instance.OnEquipSlotModified += EventManager_OnEquipSlotModified;
 
-        EventManager.Instance.OnEquipSlotModified += (es,go) =>
+        EventManager.Instance.OnEquipSlotModified += (equipmentSlot,gatherableSO) =>
         {
-            if(go == null)
+            if(gatherableSO == null)
             {
-                Destroy(equippedItem);
+                for(int i = 0; i < equipmentData.Count; i++)
+                {
+                    if(equipmentData[i].equipItemSlot == equipmentSlot)
+                    {
+                        equipmentData[i].equipItemSlot = null;
+                        Destroy(equipmentData[i].equipItemSlotItemgameObj); 
+                    }
+                }
             }
+
         };
     }
 
     private void EventManager_OnEquipSlotModified(EquipItemSlot equipItemSlot, GatherableSO gatherableSO)
     {
-        if(gatherableSO != null && equipItemSlot != null)
+        if (gatherableSO != null && equipItemSlot != null /*&& !equipmentData.Any(e => e.equipItemSlot == equipItemSlot)*/)
         {
             Debug.Log(equipItemSlot.name + " Modified With :" + gatherableSO.gatherableObjectName);
-            if(equippedItem != null)
+
+            if (inventoryItemsHolder.childCount < 2)
             {
-                Destroy(equippedItem);
+                EquipData emptySlot = equipmentData.FirstOrDefault(equipData => equipData.equipItemSlotItemgameObj == null);
+
+                if (emptySlot == null)
+                {
+                    emptySlot = new EquipData();
+                    emptySlot.equipItemSlotItemgameObj = Instantiate(gatherableSO.gatherableObjectPrefab, inventoryItemsHolder);
+                    emptySlot.equipItemSlotItemgameObj.transform.localPosition = Vector3.zero + new Vector3(0.3f, 0.2f, 0.3f);
+                    emptySlot.equipItemSlot = equipItemSlot;
+
+                    equipmentData.Add(emptySlot);
+
+                    emptySlot.equipItemSlotItemgameObj.SetActive(equipItemSlot.equipSlotType == EquipSlotType.Main);
+                }
+                else
+                {
+                    emptySlot.equipItemSlotItemgameObj = Instantiate(gatherableSO.gatherableObjectPrefab, inventoryItemsHolder);
+                    emptySlot.equipItemSlotItemgameObj.transform.localPosition = Vector3.zero + new Vector3(0.3f, 0.2f, 0.3f);
+                    emptySlot.equipItemSlot = equipItemSlot;
+
+                    emptySlot.equipItemSlotItemgameObj.SetActive(equipItemSlot.equipSlotType == EquipSlotType.Main);
+                }
             }
-            equippedItem = Instantiate(gatherableSO.gatherableObjectPrefab,inventoryItemsHolder);
-            equippedItem.transform.localPosition = Vector3.zero + new Vector3(0.3f,0.2f,0.3f);
-            EnableEquipedItems();
         }
         else
-            Debug.LogWarning(equipItemSlot.name +" Not Has Gatherable SO");
+        {
+            Debug.LogWarning(equipItemSlot.name + " Does Not Have Gatherable SO");
+        }
+
+
     }
 
     private void EventManager_Instance_OnEquipableItemEquipped(GatherableSO item)
@@ -113,36 +146,18 @@ public class EquipManager : MonoBehaviour
         torchEquip.gameObject.SetActive(active);
     }
 
-    //private bool HasTorchInInventory()
-    //{
-    //    if(InventoryTest.Instance == null) return false;
-
-    //    GatherableSO[] gatherableSOs = InventoryTest.Instance.GetGatheredObjectList().ToArray();
-    //    var hasTorch = gatherableSOs.Any(s => s == torchSO);
-    //    if (hasTorch)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
-
-    //private void RemoveTorchFromInventory()
-    //{
-    //    if (isGotTorch) return;
-
-    //    GatherableSO[] gatherableSOs = InventoryTest.Instance.GetGatheredObjectList().ToArray();
-    //    var torch = gatherableSOs.Where(s => s.gatherableObjectName == torchSO.gatherableObjectName).FirstOrDefault(); ;
-    //    InventoryTest.Instance.RemoveObjectFromInventory(torch);  // remove key from inventory
-    //}
-
     private void OnDisable()
     {
         InputManager.Instance.OnTorchKeyPerformed -= InputManager_Instance_OnTorchKeyPerformed;
         EventManager.Instance.OnEquipableItemEquipped -= EventManager_Instance_OnEquipableItemEquipped;
         EventManager.Instance.OnEquipSlotModified -= EventManager_OnEquipSlotModified;
 
+    }
+
+    [Serializable]
+    public class EquipData
+    {
+        public EquipItemSlot equipItemSlot;
+        public GameObject equipItemSlotItemgameObj;
     }
 }

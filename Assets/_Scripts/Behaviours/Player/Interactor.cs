@@ -14,14 +14,23 @@ public class Interactor : MonoBehaviour
 
     [SerializeField] private Image crossHairImage;
 
+    private bool canInteract = true;
+
     private void Start()
     {
         InputManager.Instance.inputActions.Player.InteractionKey.performed += InteractionKey_performed;
+        EventManager.Instance.OnInventoryOpened += (sender,e) => canInteract = false;
+        EventManager.Instance.OninventoryClosed += (sender, e) => canInteract = true;
+
     }
 
     private void InteractionKey_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        CastRay();
+        if(canInteract)
+        {
+           CastRay();
+        }
+        
     }
     private void FixedUpdate()
     {
@@ -31,7 +40,7 @@ public class Interactor : MonoBehaviour
     // this method Just Detect Object with Validation Only Calls By Input
     private void CastRay() 
     {
-        
+       
         if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, interactRange, interactLayerMask)) return;
 
         if (hit.collider != null)

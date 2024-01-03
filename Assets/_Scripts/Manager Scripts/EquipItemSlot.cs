@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum EquipSlotType
+{
+    Main,Aditional
+}
 public class EquipItemSlot : InventorySlot
 {
-
+    public EquipSlotType equipSlotType;
     protected override void RefreshSlotData()
     {
         var draggableItem = GetComponentInChildren<DraggableItem>();
@@ -59,6 +63,7 @@ public class EquipItemSlot : InventorySlot
                 {
                     Debug.LogError("Draggable item Not Has Gatherable SO");
                 }
+                OnSlotItemModified?.Invoke();
                 Destroy(droppedObj);
                 
             }

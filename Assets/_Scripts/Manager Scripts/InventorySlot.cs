@@ -8,7 +8,7 @@ public class InventorySlot : MonoBehaviour,IDropHandler/*,IPointerEnterHandler,I
     protected GatherableSO item;
     protected GameObject itemPrefab = null;
 
-    public static event Action OnSlotItemModified;
+    public static Action OnSlotItemModified;
     public bool IsEmpty() => item == null;
     
     public void SetItem(GatherableSO pickuppedItemSO)
