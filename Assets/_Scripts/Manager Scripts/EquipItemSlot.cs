@@ -8,7 +8,7 @@ public enum EquipSlotType
 {
     Main,Aditional
 }
-public class EquipItemSlot : InventorySlot
+public class EquipItemSlot : InventorySlot,IBeginDragHandler
 {
     public EquipSlotType equipSlotType;
     protected override void RefreshSlotData()
@@ -26,6 +26,11 @@ public class EquipItemSlot : InventorySlot
     protected override void UpdateVisual()
     {
         var draggableItem = GetComponentInChildren<DraggableItem>();
+        if (item == null) 
+        { 
+            Destroy(draggableItem.gameObject); return;
+        }
+        
 
         if (draggableItem == null && item != null)
         {
@@ -51,7 +56,8 @@ public class EquipItemSlot : InventorySlot
             GameObject droppedObj = eventData.pointerDrag;
             if (droppedObj.TryGetComponent(out DraggableItem droppedItem))
             {
-               
+                if (droppedItem.GetGatherableSO() == item) return;
+
                 SetItem(droppedItem.GetGatherableSO());
                 UpdateVisual();
 
@@ -71,4 +77,8 @@ public class EquipItemSlot : InventorySlot
 
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        item = null;
+    }
 }

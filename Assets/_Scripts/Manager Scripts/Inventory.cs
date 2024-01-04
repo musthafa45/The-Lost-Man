@@ -97,7 +97,7 @@ public class Inventory : MonoBehaviour
                 case GatherableObjectType.Healable:
                     EventManager.Instance.InvokeUseItemHealable(CurrentSelectedItem);
                     inventoryItems.Remove(CurrentSelectedItem);
-
+                    Debug.Log("Healable Used Name of :" + CurrentSelectedItem.gatherableObjectName);
                     EventManager.Instance.InvokeInventoryItemsModified();
                     break;
                 case GatherableObjectType.Collectable:

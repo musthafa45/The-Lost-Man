@@ -28,6 +28,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         itemImage.raycastTarget = false;
 
         gatherableObjectSO = GetComponentInParent<InventorySlot>().GetGatherableObjSO();
+
         orginParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();

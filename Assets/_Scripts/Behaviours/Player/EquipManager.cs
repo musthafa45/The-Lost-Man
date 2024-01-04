@@ -16,6 +16,7 @@ public class EquipManager : MonoBehaviour
     private bool isTorchActivated;
 
     private List<EquipData> equipmentData;
+    private bool isInventoryOpened;
     private void Awake()
     {
         Instance = this;
@@ -47,6 +48,62 @@ public class EquipManager : MonoBehaviour
             }
 
         };
+
+        EventManager.Instance.OnInventoryOpened += (sender, e) => {
+            UseItemUI.Instance.HideUseItemUI();
+            isInventoryOpened = true;
+        };
+        EventManager.Instance.OninventoryClosed += (sender, e) => {
+            isInventoryOpened = false;
+            ShowEquippedInventoryItems();
+        };
+    }
+
+    private void ShowEquippedInventoryItems()
+    {
+        if (HasEquppedItemOnMainSlot())
+        {
+            UseItemUI.Instance.ShowUseItemUI();
+        }
+    }
+
+    public GatherableSO GetMainSlotEquippedItemSO()
+    {
+        for (int i = 0; i < equipmentData.Count; i++)
+        {
+            if (equipmentData[i].equipItemSlotItemgameObj != null && equipmentData[i].equipItemSlot.equipSlotType == EquipSlotType.Main)
+            {
+                return equipmentData[i].equipItemSlot.GetGatherableObjSO();
+            }
+        }
+        return null;
+    }
+
+    public EquipData GetMainSlotEquippedItemData()
+    {
+        for (int i = 0; i < equipmentData.Count; i++)
+        {
+            if (equipmentData[i].equipItemSlotItemgameObj != null && equipmentData[i].equipItemSlot.equipSlotType == EquipSlotType.Main)
+            {
+                return equipmentData[i];
+            }
+        }
+        return null;
+    }
+
+    private bool HasEquppedItemOnMainSlot()
+    {
+        bool hasEquippedItem = false;
+        for (int i = 0; i < equipmentData.Count; i++)
+        {
+            if (equipmentData[i].equipItemSlotItemgameObj != null && equipmentData[i].equipItemSlot.equipSlotType == EquipSlotType.Main)
+            {
+                hasEquippedItem = true;
+                break;
+            }
+        }
+
+        return hasEquippedItem;
     }
 
     private void EventManager_OnEquipSlotModified(EquipItemSlot equipItemSlot, GatherableSO gatherableSO)
@@ -98,8 +155,41 @@ public class EquipManager : MonoBehaviour
     private void Start()
     {
         InputManager.Instance.OnTorchKeyPerformed += InputManager_Instance_OnTorchKeyPerformed;
+        InputManager.Instance.OnInteractionKeyPerformed += InputManager_OnInteractionKeyPerformed;
 
         DisableEquipedItems();
+    }
+
+    private void InputManager_OnInteractionKeyPerformed(object sender, EventArgs e)
+    {
+        if(!HasEquppedItemOnMainSlot() || isInventoryOpened) return;
+
+        GatherableSO gatherableSO = GetMainSlotEquippedItemSO();
+
+        if (gatherableSO != null)
+        {
+            Inventory.Instance.UseItem(gatherableSO);
+            var equipData = GetMainSlotEquippedItemData();
+            if(equipData != null)
+            {
+                equipData.equipItemSlot.SetItem(null);
+                equipmentData.Remove(equipData);
+                Destroy(equipData.equipItemSlotItemgameObj);
+                UseItemUI.Instance.HideUseItemUI();
+            }
+            else
+            {
+                Debug.LogWarning("No Equip Data Found");
+            }
+           
+
+        }
+        else
+        {
+            Debug.LogWarning("Player Does Not Have Equpped Item");
+        }
+
+        
     }
 
     public void DisableEquipedItems()
@@ -149,6 +239,8 @@ public class EquipManager : MonoBehaviour
     private void OnDisable()
     {
         InputManager.Instance.OnTorchKeyPerformed -= InputManager_Instance_OnTorchKeyPerformed;
+        InputManager.Instance.OnInteractionKeyPerformed -= InputManager_OnInteractionKeyPerformed;
+
         EventManager.Instance.OnEquipableItemEquipped -= EventManager_Instance_OnEquipableItemEquipped;
         EventManager.Instance.OnEquipSlotModified -= EventManager_OnEquipSlotModified;
 

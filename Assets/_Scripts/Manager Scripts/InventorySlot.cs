@@ -85,31 +85,4 @@ public class InventorySlot : MonoBehaviour,IDropHandler/*,IPointerEnterHandler,I
         return item;
     }
 
-    //public void OnPointerEnter(PointerEventData eventData)
-    //{
-    //    var draggableItem = GetComponentInChildren<DraggableItem>();
-    //    if (item != null && draggableItem != null)
-    //    {
-    //        ItemInfoHandlerUI.Instance.SetItemAndShow(GetComponentInChildren<DraggableItem>().GetGatherableSO(), transform.position);
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("There Is No Item To Show Info In this Slot");
-    //    }
-    //}
-
-    //public void OnPointerExit(PointerEventData eventData)
-    //{
-    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
-    //}
-
-    //public void OnBeginDrag(PointerEventData eventData)
-    //{
-    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
-    //}
-
-    //public void OnDrag(PointerEventData eventData)
-    //{
-    //    ItemInfoHandlerUI.Instance.ClearInfoObject();
-    //}
 }
