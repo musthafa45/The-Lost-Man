@@ -32,7 +32,7 @@ public abstract class BaseTree : MonoBehaviour
             if (!IsOverlapping(newFruitPosition, fruitPositions, 0.5f))
             {
                 var fruitPrefab = Instantiate(fruitType == FruitType.Coconut ? Prefabs.Instance.GetCoconutPrefab() :
-                                          Prefabs.Instance.GetApplePrefab(), transform);
+                                          Prefabs.Instance.GetApplePrefab(), fruitSpawnPosition);
                 fruitPrefab.transform.position = newFruitPosition;
                 fruitPositions.Add(newFruitPosition);
 
