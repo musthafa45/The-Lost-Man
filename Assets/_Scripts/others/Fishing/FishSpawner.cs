@@ -43,12 +43,12 @@ public class FishSpawner : MonoBehaviour
         return randomPosition;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (fishTankCollider != null)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(fishTankCollider.transform.position, fishTankCollider.size);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if (fishTankCollider != null)
+    //    {
+    //        Gizmos.color = Color.blue;
+    //        //Gizmos.DrawWireCube(transform.position, fishTankCollider.size);
+    //    }
+    //}
 }
