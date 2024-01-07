@@ -169,6 +169,7 @@ public class EquipManager : MonoBehaviour
         if (gatherableSO != null)
         {
             Inventory.Instance.UseItem(gatherableSO);
+
             var equipData = GetMainSlotEquippedItemData();
             if(equipData != null)
             {
@@ -181,8 +182,6 @@ public class EquipManager : MonoBehaviour
             {
                 Debug.LogWarning("No Equip Data Found");
             }
-           
-
         }
         else
         {
